@@ -1,0 +1,106 @@
+/*
+ Localizable.strings
+ IssueTracker
+ 
+ Created by 백상휘 on 2022/12/19.
+ 
+ */
+
+/*
+ 
+ Localized contents id is defined by levels and formed snake_case.
+ 
+ This file defines only "Keyword". Contents is displayed what say so.
+ 
+ ID string is Uppercased.
+ 
+ * Level 1 : Login or Main. L = Login, Main = M.
+ * Level 2 : TapName. ML = MainList, MP = MyPage, ST = Setting, N = None TabName.
+ * Level 3 : ViewController Name only UpperCase. ex) MainListViewController -> MLVC.
+ * Level 4 : UI Element Type
+ * Level 5 : (Optional) Unique Identifier
+ 
+ */
+
+/*
+ Specific Keyword
+ 
+ TXTF = UITextField
+ LB = UILabel
+ BTN = UIButton
+ ALERT = UIAlertController
+ TCELL = UITableViewCell
+ CCELL = UICollectionViewCell
+ */
+
+/*
+ Setting Localizable file in project build target has reference.
+ 
+ trilliwon.medium.com/ios%EC%97%90%EC%84%9C-localization%ED%95%98%EB%8A%94-gorgeous-%ED%95%9C-%EB%B0%A9%EB%B2%95-f82ac29d2cfe
+ */
+
+// Login
+L_N_LVC_TXTF_ID="ID";
+L_N_LVC_TXTF_PW="Password";
+L_N_LVC_BTN_LOGIN="Login";
+L_N_LVC_BTN_PWRESET="Reset Password";
+L_N_LVC_BTN_SIGNIN="Signin";
+L_N_LVC_BTN_SIGNIN_OAUTH="SignIn from Authorization Service";
+L_N_LVC_LB_SIGN_OAUTH="OR..";
+L_N_LVC_ALERT_AUTOLOGINFAIL="Login in system failed. Try login again.";
+
+// Settings - General
+
+M_ST_SVC_TCELL_GENERAL="General";
+
+// Settings - General - Login
+
+M_ST_SVC_TCELL_GENERAL_LOGIN="Login Services";
+M_ST_SVC_TCELL_GENERAL_LOGIN_AUTO="Auto Login";
+M_ST_SVC_TCELL_GENERAL_LOGIN_AUTO_DESC="Execute auto-login at launch-time using saved informations.";
+M_ST_SVC_TCELL_GENERAL_LOGIN_GITHUB="GitHub Login Activate";
+M_ST_SVC_TCELL_GENERAL_LOGIN_GITHUB_DESC="Login via GitHub functionality activate.";
+M_ST_SVC_TCELL_GENERAL_LOGIN_NAVER="Naver Login Activate";
+M_ST_SVC_TCELL_GENERAL_LOGIN_NAVER_DESC="Login via Naver functionality activate.";
+M_ST_SVC_TCELL_GENERAL_LOGIN_KAKAO="Kakao Login Activate";
+M_ST_SVC_TCELL_GENERAL_LOGIN_KAKAO_DESC="Login via Kakao functionality activate.";
+
+// Settings - General - Dark mode
+
+M_ST_SVC_TCELL_GENERAL_DARKMODE="Dark mode";
+M_ST_SVC_TCELL_GENERAL_DARKMODE_TITLE="Choose preferred mode";
+M_ST_SVC_TCELL_GENERAL_DARKMODE_LIGHT="Light mode";
+M_ST_SVC_TCELL_GENERAL_DARKMODE_DARK="Dark mode";
+M_ST_SVC_TCELL_GENERAL_DARKMODE_SYSTEM="System";
+
+// Settings - General - Language
+
+M_ST_SVC_TCELL_GENERAL_LANGUAGE="Languages";
+M_ST_SVC_TCELL_GENERAL_LANGUAGE_TITLE="Choose preferred language";
+M_ST_SVC_TCELL_GENERAL_LANGUAGE_KOREAN="한국어";
+M_ST_SVC_TCELL_GENERAL_LANGUAGE_ENGLISH="English";
+M_ST_SVC_TCELL_GENERAL_LANGUAGE_JAPANESE="日本語";
+
+// Settings - Issue/Label/Milestone
+
+M_ST_SVC_TCELL_CONTENTS="Issue/Label/Milestone";
+
+// Settings - Issue/Label/Milestone - Lists
+
+M_ST_SVC_TCELL_CONTENTS_LIST="Lists";
+M_ST_SVC_TCELL_CONTENTS_LIST_ISSUE_BGCOLOR="Issue Background Color";
+M_ST_SVC_TCELL_CONTENTS_LIST_ISSUE_BGCOLOR_DESC="Issue list background color.";
+M_ST_SVC_TCELL_CONTENTS_LIST_LABEL_BGCOLOR="Label Background Color";
+M_ST_SVC_TCELL_CONTENTS_LIST_LABEL_BGCOLOR_DESC="Label list background color.";
+M_ST_SVC_TCELL_CONTENTS_LIST_MILESTONE_BGCOLOR="Milestone Background Color";
+M_ST_SVC_TCELL_CONTENTS_LIST_MILESTONE_BGCOLOR_DESC="Milestone list background color.";
+
+// Settings - Issue/Label/Milestone - Details
+
+M_ST_SVC_TCELL_CONTENTS_DETAIL="Details";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_LABEL="Label activate/show";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_LABEL_DESC="Turn this OFF if you need fast screen.";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_PROFILEIMAGE="Profile image activate/show";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_PROFILEIMAGE_DESC="Turn this OFF if you need fast screen.";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_SIMPLEHISTORY="Simple history mode activate";
+M_ST_SVC_TCELL_CONTENTS_DETAIL_SHOW_SIMPLEHISTORY_DESC="Turn this ON if you need compact screen.";

@@ -14,6 +14,17 @@
 		1B5590F1294FED140027AA34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B5590F0294FED140027AA34 /* Assets.xcassets */; };
 		1B5590F5294FED140027AA34 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B5590F4294FED140027AA34 /* Preview Assets.xcassets */; };
 		1B559118294FEE7D0027AA34 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1B559117294FEE7D0027AA34 /* README.md */; };
+		1B559122294FFD580027AA34 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559121294FFD580027AA34 /* LoginView.swift */; };
+		1B559123294FFD580027AA34 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559121294FFD580027AA34 /* LoginView.swift */; };
+		1B559126294FFE610027AA34 /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559125294FFE610027AA34 /* CommonTextField.swift */; };
+		1B559127294FFE610027AA34 /* CommonTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559125294FFE610027AA34 /* CommonTextField.swift */; };
+		1B55912B29500C090027AA34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55912E29500C090027AA34 /* Localizable.strings */; };
+		1B55912C29500C090027AA34 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1B55912E29500C090027AA34 /* Localizable.strings */; };
+		1B55913429500D7B0027AA34 /* I18N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913329500D7B0027AA34 /* I18N.swift */; };
+		1B55913629500D950027AA34 /* Localizable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913529500D950027AA34 /* Localizable+Extensions.swift */; };
+		1B559138295012360027AA34 /* SystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559137295012360027AA34 /* SystemImages.swift */; };
+		1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913A295015F50027AA34 /* View+Constrants.swift */; };
+		1B55913E295016A60027AA34 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913D295016A60027AA34 /* CommonButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +57,17 @@
 		1B559104294FED140027AA34 /* IssueTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IssueTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B559117294FEE7D0027AA34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1B559119294FF2FB0027AA34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IssueTrackerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
+		1B559121294FFD580027AA34 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1B559125294FFE610027AA34 /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
+		1B55912D29500C090027AA34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B55912F29500C0C0027AA34 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B55913029500C0D0027AA34 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1B55913329500D7B0027AA34 /* I18N.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I18N.swift; sourceTree = "<group>"; };
+		1B55913529500D950027AA34 /* Localizable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localizable+Extensions.swift"; sourceTree = "<group>"; };
+		1B559137295012360027AA34 /* SystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImages.swift; sourceTree = "<group>"; };
+		1B55913A295015F50027AA34 /* View+Constrants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Constrants.swift"; sourceTree = "<group>"; };
+		1B55913D295016A60027AA34 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,13 +119,23 @@
 		1B5590E6294FED120027AA34 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1B55913C2950163E0027AA34 /* View+Constants */,
+				1B559139295015E20027AA34 /* View+Extensions */,
+				1B559124294FFE450027AA34 /* CommonUIStyles */,
+				1B55911A294FFCC50027AA34 /* Authentication */,
+				1B55911B294FFCCD0027AA34 /* MainList */,
+				1B55911E294FFCE40027AA34 /* MyPage */,
+				1B55911F294FFCEF0027AA34 /* Settings */,
 				1B559119294FF2FB0027AA34 /* Info.plist */,
 				1B5590E7294FED120027AA34 /* IssueTrackerApp.swift */,
 				1B5590E9294FED120027AA34 /* Persistence.swift */,
 				1B5590EE294FED120027AA34 /* ContentView.swift */,
+				1B55913329500D7B0027AA34 /* I18N.swift */,
+				1B55913529500D950027AA34 /* Localizable+Extensions.swift */,
 				1B5590F0294FED140027AA34 /* Assets.xcassets */,
 				1B5590F2294FED140027AA34 /* IssueTracker.entitlements */,
 				1B5590EB294FED120027AA34 /* IssueTracker.xcdatamodeld */,
+				1B55912E29500C090027AA34 /* Localizable.strings */,
 				1B5590F3294FED140027AA34 /* Preview Content */,
 			);
 			path = IssueTracker;
@@ -131,6 +163,77 @@
 			path = IssueTrackerUITests;
 			sourceTree = "<group>";
 		};
+		1B55911A294FFCC50027AA34 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				1B559121294FFD580027AA34 /* LoginView.swift */,
+				1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		1B55911B294FFCCD0027AA34 /* MainList */ = {
+			isa = PBXGroup;
+			children = (
+				1B55911D294FFCDB0027AA34 /* Detail */,
+				1B55911C294FFCD60027AA34 /* List */,
+			);
+			path = MainList;
+			sourceTree = "<group>";
+		};
+		1B55911C294FFCD60027AA34 /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		1B55911D294FFCDB0027AA34 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		1B55911E294FFCE40027AA34 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		1B55911F294FFCEF0027AA34 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		1B559124294FFE450027AA34 /* CommonUIStyles */ = {
+			isa = PBXGroup;
+			children = (
+				1B559125294FFE610027AA34 /* CommonTextField.swift */,
+				1B55913D295016A60027AA34 /* CommonButton.swift */,
+			);
+			path = CommonUIStyles;
+			sourceTree = "<group>";
+		};
+		1B559139295015E20027AA34 /* View+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B559137295012360027AA34 /* SystemImages.swift */,
+			);
+			path = "View+Extensions";
+			sourceTree = "<group>";
+		};
+		1B55913C2950163E0027AA34 /* View+Constants */ = {
+			isa = PBXGroup;
+			children = (
+				1B55913A295015F50027AA34 /* View+Constrants.swift */,
+			);
+			path = "View+Constants";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +244,7 @@
 				1B5590E0294FED120027AA34 /* Sources */,
 				1B5590E1294FED120027AA34 /* Frameworks */,
 				1B5590E2294FED120027AA34 /* Resources */,
+				1B55913129500CC10027AA34 /* Localize */,
 			);
 			buildRules = (
 			);
@@ -158,6 +262,7 @@
 				1B5590F6294FED140027AA34 /* Sources */,
 				1B5590F7294FED140027AA34 /* Frameworks */,
 				1B5590F8294FED140027AA34 /* Resources */,
+				1B55913229500CFF0027AA34 /* Localize */,
 			);
 			buildRules = (
 			);
@@ -206,6 +311,7 @@
 					};
 					1B559103294FED140027AA34 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = 1B5590E3294FED120027AA34;
 					};
 				};
@@ -217,6 +323,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				ko,
 			);
 			mainGroup = 1B5590DB294FED120027AA34;
 			productRefGroup = 1B5590E5294FED120027AA34 /* Products */;
@@ -236,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B559118294FEE7D0027AA34 /* README.md in Resources */,
+				1B55912B29500C090027AA34 /* Localizable.strings in Resources */,
 				1B5590F5294FED140027AA34 /* Preview Assets.xcassets in Resources */,
 				1B5590F1294FED140027AA34 /* Assets.xcassets in Resources */,
 			);
@@ -245,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B55912C29500C090027AA34 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,14 +367,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1B55913129500CC10027AA34 /* Localize */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Localize;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\necho \"generating I18N.swift\"\n\ntouch tempI18N.swift\necho \"struct I18N {\" >> tempI18N.swift\ninputfile=\"${SRCROOT}/IssueTracker/en.lproj/Localizable.strings\"\n\nwhile IFS= read -r line\n\ndo\necho $line\npattern='^[a-zA-Z]+(.*)[\\\\s]*=[\\\\s]*(.*)$'\n\ncomment='\\/\\/.+'\n\nif [[ $line =~ $pattern ]]\nthen\n    echo \"Yes👌\"\n    variableName=$(echo ${line%%=*})\n    echo $variableName\n    if [ \"$variableName\" != \"\" ]; then\n        echo \"    static let $variableName = \\\"$variableName\\\".localized\" >> tempI18N.swift\n    fi\nelse\n    if [[ $line =~ $comment ]]\n    then\n        echo \"Comment 📝\"\n        echo \"\\n    $line\" >> tempI18N.swift\n    else\n        echo \"No👎\"\n    fi\nfi\ndone <\"$inputfile\"\n\necho \"}\" >> tempI18N.swift\ncat \"tempI18N.swift\" > ${SRCROOT}/IssueTracker/I18N.swift\nrm \"tempI18N.swift\"\n\necho \"-------------\"\ncat $inputfile\ncat ${SRCROOT}/Manhwakyung-ios/Resources/I18N.swift\necho \"-------------\"\n";
+		};
+		1B55913229500CFF0027AA34 /* Localize */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Localize;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\necho \"generating I18N.swift\"\n\ntouch tempI18N.swift\necho \"struct I18N {\" >> tempI18N.swift\ninputfile=\"${SRCROOT}/IssueTracker/en.lproj/Localizable.strings\"\n\nwhile IFS= read -r line\n\ndo\necho $line\npattern='^[a-zA-Z]+(.*)[\\\\s]*=[\\\\s]*(.*)$'\n\ncomment='\\/\\/.+'\n\nif [[ $line =~ $pattern ]]\nthen\n    echo \"Yes👌\"\n    variableName=$(echo ${line%%=*})\n    echo $variableName\n    if [ \"$variableName\" != \"\" ]; then\n        echo \"    static let $variableName = \\\"$variableName\\\".localized\" >> tempI18N.swift\n    fi\nelse\n    if [[ $line =~ $comment ]]\n    then\n        echo \"Comment 📝\"\n        echo \"\\n    $line\" >> tempI18N.swift\n    else\n        echo \"No👎\"\n    fi\nfi\ndone <\"$inputfile\"\n\necho \"}\" >> tempI18N.swift\ncat \"tempI18N.swift\" > ${SRCROOT}/IssueTracker/I18N.swift\nrm \"tempI18N.swift\"\n\necho \"-------------\"\ncat $inputfile\ncat ${SRCROOT}/Manhwakyung-ios/Resources/I18N.swift\necho \"-------------\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B5590E0294FED120027AA34 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B559126294FFE610027AA34 /* CommonTextField.swift in Sources */,
+				1B55913429500D7B0027AA34 /* I18N.swift in Sources */,
+				1B55913E295016A60027AA34 /* CommonButton.swift in Sources */,
 				1B5590ED294FED120027AA34 /* IssueTracker.xcdatamodeld in Sources */,
+				1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */,
+				1B559138295012360027AA34 /* SystemImages.swift in Sources */,
 				1B5590E8294FED120027AA34 /* IssueTrackerApp.swift in Sources */,
+				1B55913629500D950027AA34 /* Localizable+Extensions.swift in Sources */,
 				1B5590EF294FED120027AA34 /* ContentView.swift in Sources */,
+				1B559122294FFD580027AA34 /* LoginView.swift in Sources */,
 				1B5590EA294FED120027AA34 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +436,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B559127294FFE610027AA34 /* CommonTextField.swift in Sources */,
+				1B559123294FFD580027AA34 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +455,19 @@
 			targetProxy = 1B559105294FED140027AA34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1B55912E29500C090027AA34 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1B55912D29500C090027AA34 /* en */,
+				1B55912F29500C0C0027AA34 /* ja */,
+				1B55913029500C0D0027AA34 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1B55910C294FED140027AA34 /* Debug */ = {
@@ -538,11 +709,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3ZPWB4HNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanghwiback.IssueTrackerUITests;
@@ -550,6 +727,8 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "IssueTracker/Authentication/IssueTrackerUITests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = IssueTracker;
@@ -560,11 +739,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3ZPWB4HNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanghwiback.IssueTrackerUITests;
@@ -572,6 +757,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "IssueTracker/Authentication/IssueTrackerUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = IssueTracker;
