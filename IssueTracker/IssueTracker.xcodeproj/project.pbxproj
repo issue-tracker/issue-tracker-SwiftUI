@@ -25,6 +25,16 @@
 		1B559138295012360027AA34 /* SystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559137295012360027AA34 /* SystemImages.swift */; };
 		1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913A295015F50027AA34 /* View+Constrants.swift */; };
 		1B55913E295016A60027AA34 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913D295016A60027AA34 /* CommonButton.swift */; };
+		1BF763702951B16C00A1CD8C /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7636F2951B16C00A1CD8C /* UserState.swift */; };
+		1BF763722951B17F00A1CD8C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763712951B17F00A1CD8C /* AppState.swift */; };
+		1BF763742951B3D300A1CD8C /* UserStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763732951B3D300A1CD8C /* UserStateModel.swift */; };
+		1BF763752951B3D300A1CD8C /* UserStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763732951B3D300A1CD8C /* UserStateModel.swift */; };
+		1BF763772951B3DF00A1CD8C /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763762951B3DF00A1CD8C /* AppStateModel.swift */; };
+		1BF763782951B3DF00A1CD8C /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763762951B3DF00A1CD8C /* AppStateModel.swift */; };
+		1BF7637A2951C4F100A1CD8C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763792951C4F100A1CD8C /* MainView.swift */; };
+		1BF7637B2951C4F100A1CD8C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763792951C4F100A1CD8C /* MainView.swift */; };
+		1BF7637D2951CC6100A1CD8C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7637C2951CC6100A1CD8C /* HomeView.swift */; };
+		1BF7637E2951CC6100A1CD8C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7637C2951CC6100A1CD8C /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +78,12 @@
 		1B559137295012360027AA34 /* SystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImages.swift; sourceTree = "<group>"; };
 		1B55913A295015F50027AA34 /* View+Constrants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Constrants.swift"; sourceTree = "<group>"; };
 		1B55913D295016A60027AA34 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		1BF7636F2951B16C00A1CD8C /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
+		1BF763712951B17F00A1CD8C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1BF763732951B3D300A1CD8C /* UserStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateModel.swift; sourceTree = "<group>"; };
+		1BF763762951B3DF00A1CD8C /* AppStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
+		1BF763792951C4F100A1CD8C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		1BF7637C2951CC6100A1CD8C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +135,7 @@
 		1B5590E6294FED120027AA34 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1BF7636E2951B15E00A1CD8C /* Shared */,
 				1B55913C2950163E0027AA34 /* View+Constants */,
 				1B559139295015E20027AA34 /* View+Extensions */,
 				1B559124294FFE450027AA34 /* CommonUIStyles */,
@@ -128,6 +145,7 @@
 				1B55911F294FFCEF0027AA34 /* Settings */,
 				1B559119294FF2FB0027AA34 /* Info.plist */,
 				1B5590E7294FED120027AA34 /* IssueTrackerApp.swift */,
+				1BF7637C2951CC6100A1CD8C /* HomeView.swift */,
 				1B5590E9294FED120027AA34 /* Persistence.swift */,
 				1B5590EE294FED120027AA34 /* ContentView.swift */,
 				1B55913329500D7B0027AA34 /* I18N.swift */,
@@ -175,6 +193,7 @@
 		1B55911B294FFCCD0027AA34 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
+				1BF763792951C4F100A1CD8C /* MainView.swift */,
 				1B55911D294FFCDB0027AA34 /* Detail */,
 				1B55911C294FFCD60027AA34 /* List */,
 			);
@@ -232,6 +251,17 @@
 				1B55913A295015F50027AA34 /* View+Constrants.swift */,
 			);
 			path = "View+Constants";
+			sourceTree = "<group>";
+		};
+		1BF7636E2951B15E00A1CD8C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1BF7636F2951B16C00A1CD8C /* UserState.swift */,
+				1BF763732951B3D300A1CD8C /* UserStateModel.swift */,
+				1BF763712951B17F00A1CD8C /* AppState.swift */,
+				1BF763762951B3DF00A1CD8C /* AppStateModel.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +337,7 @@
 					};
 					1B5590F9294FED140027AA34 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
 						TestTargetID = 1B5590E3294FED120027AA34;
 					};
 					1B559103294FED140027AA34 = {
@@ -411,17 +442,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF763742951B3D300A1CD8C /* UserStateModel.swift in Sources */,
 				1B559126294FFE610027AA34 /* CommonTextField.swift in Sources */,
 				1B55913429500D7B0027AA34 /* I18N.swift in Sources */,
 				1B55913E295016A60027AA34 /* CommonButton.swift in Sources */,
 				1B5590ED294FED120027AA34 /* IssueTracker.xcdatamodeld in Sources */,
+				1BF7637D2951CC6100A1CD8C /* HomeView.swift in Sources */,
 				1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */,
 				1B559138295012360027AA34 /* SystemImages.swift in Sources */,
+				1BF763702951B16C00A1CD8C /* UserState.swift in Sources */,
 				1B5590E8294FED120027AA34 /* IssueTrackerApp.swift in Sources */,
+				1BF7637A2951C4F100A1CD8C /* MainView.swift in Sources */,
 				1B55913629500D950027AA34 /* Localizable+Extensions.swift in Sources */,
 				1B5590EF294FED120027AA34 /* ContentView.swift in Sources */,
+				1BF763722951B17F00A1CD8C /* AppState.swift in Sources */,
 				1B559122294FFD580027AA34 /* LoginView.swift in Sources */,
 				1B5590EA294FED120027AA34 /* Persistence.swift in Sources */,
+				1BF763772951B3DF00A1CD8C /* AppStateModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +466,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BF763752951B3D300A1CD8C /* UserStateModel.swift in Sources */,
+				1BF763782951B3DF00A1CD8C /* AppStateModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +476,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B559127294FFE610027AA34 /* CommonTextField.swift in Sources */,
+				1BF7637E2951CC6100A1CD8C /* HomeView.swift in Sources */,
+				1BF7637B2951C4F100A1CD8C /* MainView.swift in Sources */,
 				1B559123294FFD580027AA34 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,7 +645,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -644,7 +685,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
@@ -664,11 +705,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3ZPWB4HNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanghwiback.IssueTrackerTests;
@@ -676,6 +723,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IssueTracker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/IssueTracker";
@@ -687,11 +735,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3ZPWB4HNK;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 13.1;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sanghwiback.IssueTrackerTests;

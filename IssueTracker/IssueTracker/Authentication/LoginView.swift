@@ -7,10 +7,14 @@
 
 import SwiftUI
 
+/// V
 struct LoginView: View {
   
   @State var idTextValue: String = ""
   @State var passwordTextValue: String = ""
+  
+  @EnvironmentObject
+  var userState: UserState
   
   var body: some View {
     VStack(spacing: spacing) {
@@ -25,9 +29,13 @@ struct LoginView: View {
         placeHolder: I18N.L_N_LVC_TXTF_PW,
         text: $passwordTextValue)
       
-      CommonButton(buttonTitle: I18N.L_N_LVC_BTN_LOGIN)
-        .toCommon()
-        .loginShadow()
+      CommonButton(
+        buttonTitle: I18N.L_N_LVC_BTN_LOGIN,
+        actionHandler: {
+          userState.isLogin = true
+        })
+      .toCommon()
+      .loginShadow()
       
       HStack(spacing: spacing) {
         Button(action: {
@@ -64,6 +72,7 @@ struct LoginView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         }
+        .shadow(radius: 0, x: 2, y: 2)
         Button(action: {
           
         }) {
@@ -71,6 +80,7 @@ struct LoginView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         }
+        .shadow(radius: 0, x: 2, y: 2)
         Button(action: {
           
         }) {
@@ -78,6 +88,7 @@ struct LoginView: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
         }
+        .shadow(radius: 0, x: 2, y: 2)
       }
       .frame(height: 60)
     }

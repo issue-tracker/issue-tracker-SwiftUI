@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct IssueTrackerApp: App {
+  
+  let user: UserState = .init()
+  let app: AppState = .init()
+  
+  @ViewBuilder
   var body: some Scene {
     WindowGroup {
-      LoginView()
+      HomeView()
+        .environmentObject(user)
+        .environmentObject(app)
     }
   }
 }
