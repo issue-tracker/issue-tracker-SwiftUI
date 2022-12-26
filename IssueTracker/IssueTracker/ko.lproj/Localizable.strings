@@ -47,6 +47,22 @@ L_N_LVC_BTN_SIGNIN_OAUTH="간편회원가입";
 L_N_LVC_LB_SIGN_OAUTH="간편하게 로그인\/회원가입";
 L_N_LVC_ALERT_AUTOLOGINFAIL="자동 로그인이 실패하였습니다. 다시 로그인해 주시기 바랍니다.";
 
+// SignIn
+L_N_SIVC_LB_ID="아이디";
+L_N_SIVC_LB_ID_DESC="영문, 숫자를 포함한 아이디를 입력해주세요(4~12).";
+L_N_SIVC_TXTF_ID="아이디";
+L_N_SIVC_LB_PW="비밀번호";
+L_N_SIVC_LB_PW_DESC="영문, 숫자를 포함한 8자 이상의 비밀번호를 입력해주세요.";
+L_N_SIVC_TXTF_PW="비밀번호";
+L_N_SIVC_LB_PW_CONF="비밀번호 확인";
+L_N_SIVC_TXTF_PW_CONF="비밀번호 확인";
+L_N_SIVC_LB_EMAIL="이메일";
+L_N_SIVC_TXTF_EMAIL="이메일";
+L_N_SIVC_LB_NICK="닉네임";
+L_N_SIVC_LB_NICK_DESC="다른 유저와 겹치지 않는 별명을 입력해주세요.";
+L_N_SIVC_TXTF_NICK="닉네임";
+L_N_SIVC_BTN_CONF="가입하기";
+
 // Settings - General
 
 M_ST_SVC_TCELL_GENERAL="일반";

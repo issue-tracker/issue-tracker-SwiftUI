@@ -10,6 +10,22 @@ struct I18N {
     static let L_N_LVC_LB_SIGN_OAUTH = "L_N_LVC_LB_SIGN_OAUTH".localized
     static let L_N_LVC_ALERT_AUTOLOGINFAIL = "L_N_LVC_ALERT_AUTOLOGINFAIL".localized
 
+    // SignIn
+    static let L_N_SIVC_LB_ID = "L_N_SIVC_LB_ID".localized
+    static let L_N_SIVC_LB_ID_DESC = "L_N_SIVC_LB_ID_DESC".localized
+    static let L_N_SIVC_TXTF_ID = "L_N_SIVC_TXTF_ID".localized
+    static let L_N_SIVC_LB_PW = "L_N_SIVC_LB_PW".localized
+    static let L_N_SIVC_LB_PW_DESC = "L_N_SIVC_LB_PW_DESC".localized
+    static let L_N_SIVC_TXTF_PW = "L_N_SIVC_TXTF_PW".localized
+    static let L_N_SIVC_LB_PW_CONF = "L_N_SIVC_LB_PW_CONF".localized
+    static let L_N_SIVC_TXTF_PW_CONF = "L_N_SIVC_TXTF_PW_CONF".localized
+    static let L_N_SIVC_LB_EMAIL = "L_N_SIVC_LB_EMAIL".localized
+    static let L_N_SIVC_TXTF_EMAIL = "L_N_SIVC_TXTF_EMAIL".localized
+    static let L_N_SIVC_LB_NICK = "L_N_SIVC_LB_NICK".localized
+    static let L_N_SIVC_LB_NICK_DESC = "L_N_SIVC_LB_NICK_DESC".localized
+    static let L_N_SIVC_TXTF_NICK = "L_N_SIVC_TXTF_NICK".localized
+    static let L_N_SIVC_BTN_CONF = "L_N_SIVC_BTN_CONF".localized
+
     // Settings - General
     static let M_ST_SVC_TCELL_GENERAL = "M_ST_SVC_TCELL_GENERAL".localized
 

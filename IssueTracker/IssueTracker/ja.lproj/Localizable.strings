@@ -47,6 +47,22 @@ L_N_LVC_BTN_SIGNIN_OAUTH="簡単な会員登録";
 L_N_LVC_LB_SIGN_OAUTH="簡単にログイン/会員登録";
 L_N_LVC_ALERT_AUTOLOGINFAIL="自動ログインに失敗しました。もう一度ログインしてください.";
 
+// SignIn
+L_N_SIVC_LB_ID="ID";
+L_N_SIVC_LB_ID_DESC="英語、数字を含むIDを入力してください(4~12).";
+L_N_SIVC_TXTF_ID="ID";
+L_N_SIVC_LB_PW="パスワード";
+L_N_SIVC_LB_PW_DESC="英語、数字を含む8文字以上のパスワードを入力してください.";
+L_N_SIVC_TXTF_PW="パスワード";
+L_N_SIVC_LB_PW_CONF="パスワード 確認";
+L_N_SIVC_TXTF_PW_CONF="パスワード 確認";
+L_N_SIVC_LB_EMAIL="EMail";
+L_N_SIVC_TXTF_EMAIL="EMail";
+L_N_SIVC_LB_NICK="ニックネーム";
+L_N_SIVC_LB_NICK_DESC="他のユーザーと重複しない別名を入力してください.";
+L_N_SIVC_TXTF_NICK="ニックネーム";
+L_N_SIVC_BTN_CONF="登録完了";
+
 // Settings - General
 
 M_ST_SVC_TCELL_GENERAL="一般";

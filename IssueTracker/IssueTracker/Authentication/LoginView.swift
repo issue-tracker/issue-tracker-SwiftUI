@@ -17,82 +17,83 @@ struct LoginView: View {
   var userState: UserState
   
   var body: some View {
-    VStack(spacing: spacing) {
-      Spacer()
-      CommonTextField(
-        capImage: idTextValue.count > 0 ? Image.personWave2Fill : Image.personFill,
-        placeHolder: I18N.L_N_LVC_TXTF_ID,
-        text: $idTextValue)
-      
-      CommonTextField(
-        capImage: passwordTextValue.count > 0 ? Image.lockOpen : Image.lock,
-        placeHolder: I18N.L_N_LVC_TXTF_PW,
-        text: $passwordTextValue)
-      
-      CommonButton(
-        buttonTitle: I18N.L_N_LVC_BTN_LOGIN,
-        actionHandler: {
-          userState.isLogin = true
-        })
-      .toCommon()
-      .loginShadow()
-      
-      HStack(spacing: spacing) {
-        Button(action: {
-
-        }) {
-          Text(I18N.L_N_LVC_BTN_PWRESET)
-            .font(.footnote)
-            .foregroundColor(.gray)
-            .padding(.top)
-        }
-        
+    NavigationView {
+      VStack(spacing: spacing) {
         Spacer()
-
-        Button(action: {
-
-        }) {
-          Text(I18N.L_N_LVC_BTN_SIGNIN)
-            .font(.footnote)
-            .foregroundColor(.gray)
-            .padding(.top)
-        }
-      }
-      .padding(EdgeInsets(top: 0, leading: 32, bottom: 16, trailing: 32))
-      
-      CommonButton(buttonTitle: I18N.L_N_LVC_BTN_SIGNIN_OAUTH)
-        .font(.title2)
-        .foregroundColor(.gray)
-      
-      HStack(spacing: spacing) {
-        Button(action: {
+        CommonTextField(
+          capImage: idTextValue.count > 0 ? Image.personWave2Fill : Image.personFill,
+          placeHolder: I18N.L_N_LVC_TXTF_ID,
+          text: $idTextValue)
+        
+        CommonTextField(
+          capImage: passwordTextValue.count > 0 ? Image.lockOpen : Image.lock,
+          placeHolder: I18N.L_N_LVC_TXTF_PW,
+          text: $passwordTextValue)
+        
+        CommonButton(
+          buttonTitle: I18N.L_N_LVC_BTN_LOGIN,
+          actionHandler: {
+            userState.isLogin = true
+          })
+        .toCommon()
+        .loginShadow()
+        
+        HStack(alignment: .center, spacing: spacing) {
+          Button(action: {
+            
+          }) {
+            Text(I18N.L_N_LVC_BTN_PWRESET)
+              .font(.footnote)
+              .foregroundColor(.gray)
+              .padding(.top)
+          }
           
-        }) {
-          Image("login_octocat")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-        }
-        .shadow(radius: 0, x: 2, y: 2)
-        Button(action: {
+          Spacer()
           
-        }) {
-          Image("login_icon_kakao")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+          NavigationLink(destination: {
+            SignInView()
+          }, label: {
+            Text(I18N.L_N_LVC_BTN_SIGNIN)
+          })
         }
-        .shadow(radius: 0, x: 2, y: 2)
-        Button(action: {
-          
-        }) {
-          Image("login_icon_naver")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
+        .padding(EdgeInsets(top: 0, leading: 32, bottom: 16, trailing: 32))
+        
+        CommonButton(buttonTitle: I18N.L_N_LVC_BTN_SIGNIN_OAUTH)
+          .font(.title2)
+          .foregroundColor(.gray)
+        
+        HStack(spacing: spacing) {
+          Button(action: {
+            
+          }) {
+            ButtonImage(imageName: "login_octocat")
+          }
+          Button(action: {
+            
+          }) {
+            ButtonImage(imageName: "login_icon_kakao")
+          }
+          Button(action: {
+            
+          }) {
+            ButtonImage(imageName: "login_icon_naver")
+          }
         }
+        .frame(height: 60)
+      } // end of VStack
+      .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+    } // end of NavigationView
+  } // end of LoginView body
+  
+  struct ButtonImage: View {
+    let imageName: String
+    
+    var body: some View {
+      Image(imageName)
+        .resizable()
+        .aspectRatio(contentMode: .fit)
         .shadow(radius: 0, x: 2, y: 2)
-      }
-      .frame(height: 60)
-    }
-    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+    } // end of ButtonImage body
   }
 }
 

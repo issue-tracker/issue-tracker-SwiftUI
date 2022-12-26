@@ -9,15 +9,23 @@ import SwiftUI
 
 struct CommonTextField: View {
   
-  let capImage: Image
+  let capImage: Image?
   let placeHolder: String
   
   @Binding var text: String
   
+  init(capImage: Image? = nil, placeHolder: String, text: Binding<String>) {
+    self.capImage = capImage
+    self.placeHolder = placeHolder
+    self._text = text
+  }
+  
   var body: some View {
     HStack(spacing: spacing) {
-      capImage
-        .frame(width: 20, height: 20)
+      if let capImage {
+        capImage
+          .frame(width: 20, height: 20)
+      }
       TextField(placeHolder,
                 text: $text)
         .font(.title3)

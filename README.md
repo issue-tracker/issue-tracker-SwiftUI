@@ -37,6 +37,47 @@ UIKit 으로 개발된 프로젝트는 [링크](https://github.com/issue-tracker
 
 ![App Structure](https://user-images.githubusercontent.com/65931336/208330665-cb612a4c-7ceb-4b03-ab75-376f383fcbdd.jpg)
 
+## ✍️ Coding Convention
+
+* 컨텐츠를 최초 정의하는 View 구조체는 한눈에 뷰의 구조를 파악할 수 있도록 간단/명확하게 해야 합니다(코드 가독성 증가).
+
+```swift
+struct ContentView: View {
+  @State var text: String
+  
+  var body: some View {
+    VStack {
+      ChildHStackWithCircle($text)
+    }
+  }
+  
+  /// ContentView 의 body 에 정의해도 된다. 하지만 ContentView 의 body 는 뷰의 구조만 설명한다.
+  /// 이름으로 어떤 Element 인지 설명하려다 보니 이름이 길어질 수 있다.  
+  struct ChildHStackWithCircle: View {
+    @State var isEmpty: Bool
+    
+    @Binding var text: String
+    
+    init(_ text: Binding<String>, _ status: Binding<String>) {
+      self._text = text
+      self._status = status
+    }
+    
+    var body: some View {
+      HStack(alignment: .center) {
+        Circle()
+          .foregroundColor(isEmpty ? .red : .blue)
+          .frame(width: 8, height: 8)
+        TextField("placeHolder", text: $text)
+          .onChange(of: text) { newValue in 
+            self.isEmpty = newValue.isEmpty
+          }
+      }
+    }
+  }
+}
+```
+
 ## ❗️ Achievements
 
 

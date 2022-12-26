@@ -49,6 +49,22 @@ L_N_LVC_BTN_SIGNIN_OAUTH="SignIn from Authorization Service";
 L_N_LVC_LB_SIGN_OAUTH="OR..";
 L_N_LVC_ALERT_AUTOLOGINFAIL="Login in system failed. Try login again.";
 
+// SignIn
+L_N_SIVC_LB_ID="ID";
+L_N_SIVC_LB_ID_DESC="type id including alphabet, number(4~12).";
+L_N_SIVC_TXTF_ID="Enter ID";
+L_N_SIVC_LB_PW="Password";
+L_N_SIVC_LB_PW_DESC="type password including alphabet, number(8~).";
+L_N_SIVC_TXTF_PW="Enter Password";
+L_N_SIVC_LB_PW_CONF="Password Confirmed";
+L_N_SIVC_TXTF_PW_CONF="Enter Password";
+L_N_SIVC_LB_EMAIL="Email";
+L_N_SIVC_TXTF_EMAIL="Enter Email";
+L_N_SIVC_LB_NICK="Nickname";
+L_N_SIVC_LB_NICK_DESC="type nickname unique(2~12).";
+L_N_SIVC_TXTF_NICK="Enter Nickname";
+L_N_SIVC_BTN_CONF="Complete";
+
 // Settings - General
 
 M_ST_SVC_TCELL_GENERAL="General";
