@@ -8,14 +8,6 @@
 import SwiftUI
 
 struct SignInView: View {
-  @State var idText: String = ""
-  @State var pwText: String = ""
-  @State var pwConfirmText: String = ""
-  @State var emailText: String = ""
-  @State var nicknameText: String = ""
-  
-  @State var isAlertShow: Bool = false
-  
   @ObservedObject var vm = SignInViewModel()
   
   var body: some View {
@@ -44,7 +36,9 @@ struct SignInView: View {
         )
         
         InputField(
-          labels: [DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true)],
+          labels: [
+            DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true)
+          ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
             text: $vm.pwConfirmText),
@@ -52,7 +46,9 @@ struct SignInView: View {
         )
         
         InputField(
-          labels: [DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true)],
+          labels: [
+            DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true)
+          ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_EMAIL,
             text: $vm.emailText),
@@ -80,7 +76,7 @@ struct SignInView: View {
         }
         .alert(isPresented: $vm.showConfirmedAlert) {
           let dismissButton = Alert.Button.default(Text("OK")) {
-            isAlertShow = false
+            vm.showConfirmedAlert = false
           }
           
           return Alert(
@@ -91,7 +87,7 @@ struct SignInView: View {
         }
         .alert(isPresented: $vm.showNotEnoughAlert) {
           let dismissButton = Alert.Button.default(Text("OK")) {
-            isAlertShow = false
+            vm.showNotEnoughAlert = false
           }
           
           return Alert(
@@ -102,7 +98,7 @@ struct SignInView: View {
         }
         .alert(isPresented: $vm.showLogicAlert) {
           let dismissButton = Alert.Button.default(Text("OK")) {
-            isAlertShow = false
+            vm.showLogicAlert = false
           }
           
           return Alert(
@@ -138,24 +134,21 @@ struct SignInView: View {
     }
     
     var body: some View {
-      VStack(alignment: .leading, spacing: 4) {
-        HStack(alignment: .center, spacing: 0) {
-          Circle()
-            .foregroundColor(fieldStatus ? .blue : .red)
-            .frame(width: 8,height: 8)
-            .padding(4)
-          if let label = labels.first {
+      HStack(alignment: .top, spacing: 0) {
+        Circle()
+          .foregroundColor(fieldStatus ? .blue : .red)
+          .frame(width: 8,height: 8)
+        .padding(4)
+        VStack(alignment: .leading, spacing: 4) {
+          labels.first
+          
+          if labels.count >= 2, let label = labels.last {
             label
           }
+          
+          textField
         }
-        
-        if labels.count >= 2 {
-          labels.last!
-            .padding(.leading)
-        }
-        
-        textField
-          .padding(.horizontal)
+        .padding(.trailing, 16)
       }
     }
   }
@@ -165,10 +158,15 @@ struct SignInView: View {
     private let isBold: Bool
     
     private var customFont: UIFont {
-      isBold ? UIFont.boldSystemFont(ofSize: 15) : UIFont.preferredFont(forTextStyle: .footnote)
+      isBold
+      ? UIFont.boldSystemFont(ofSize: 15)
+      : UIFont.preferredFont(forTextStyle: .footnote)
     }
     
-    init(text: String, isBold: Bool = false) {
+    init(
+      text: String,
+      isBold: Bool = false
+    ) {
       self.text = text
       self.isBold = isBold
     }

@@ -78,8 +78,27 @@ struct ContentView: View {
 }
 ```
 
+* 모든 Device (모바일 포함) 에서의 가독성을 위해 한 Line 에 너무 긴 코드를 넣지는 않는다. 파라미터가 두 개 이상인 호출, 선언문은 줄바꿈을 이용한다거나 코드 자체를 다시 한번 확인하는 등의 노력을 기울이도록 한다.
+  * 위의 사항은 절대적인 것이 아닌 **권장**사항이다. 
+
+```swift
+/// Not Recommended
+private var customFont: UIFont {
+  isBold ? UIFont.boldSystemFont(ofSize: 15) : UIFont.preferredFont(forTextStyle: .footnote)
+}
+/// Recommended
+private var customFont: UIFont {
+  isBold
+  ? UIFont.boldSystemFont(ofSize: 15)
+  : UIFont.preferredFont(forTextStyle: .footnote)
+}
+```
+
 ## ❗️ Achievements
 
+* 처음부터 다국어 버전을 고려하며 시작하였더니 적은 노력으로도 다국어 앱을 만들 수 있었습니다.
+* 이전 AutoLayout 버전의 앱에서 테스트를 한 내용을 참고하여 쉽게 테스트도 적용할 수 있었습니다.
+* ViewModel 을 상태관리하는 객체로 정의하고 나니 MVVM 을 처음 시도해볼 수 있었습니다.
 
 ## ❗️ Challenge
 
