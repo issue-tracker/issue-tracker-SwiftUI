@@ -64,6 +64,12 @@ L_N_SIVC_LB_NICK="Nickname";
 L_N_SIVC_LB_NICK_DESC="type nickname unique(2~12).";
 L_N_SIVC_TXTF_NICK="Enter Nickname";
 L_N_SIVC_BTN_CONF="Complete";
+L_N_SIVC_ALERT_CONF_TITLE="Congratulations";
+L_N_SIVC_ALERT_CONF_MSG="SignIn Complete!";
+L_N_SIVC_ALERT_NOTENOUGH_TITLE="Warning";
+L_N_SIVC_ALERT_NOTENOUGH_MSG="Not Enough inputs. Check the screen.";
+L_N_SIVC_ALERT_ERROR_TITLE="Error";
+L_N_SIVC_ALERT_ERROR_MSG="Undefined Error occured. Retry again please.";
 
 // Settings - General
 

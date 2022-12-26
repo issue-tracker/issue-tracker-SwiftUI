@@ -16,6 +16,8 @@ struct SignInView: View {
   
   @State var isAlertShow: Bool = false
   
+  @ObservedObject var vm = SignInViewModel()
+  
   var body: some View {
     ScrollView {
       VStack(spacing: 15) {
@@ -26,10 +28,9 @@ struct SignInView: View {
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_ID,
-            text: $idText)
-        ) { text -> Bool in
-          return 4...12 ~= text.count
-        }
+            text: $vm.idText),
+          fieldStatus: vm.isFineId
+        )
         
         InputField(
           labels: [
@@ -38,23 +39,24 @@ struct SignInView: View {
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_PW,
-            text: $nicknameText)
-        ) { text -> Bool in
-          return text.count >= 8
-        }
+            text: $vm.pwText),
+          fieldStatus: vm.isFinePw
+        )
         
         InputField(
           labels: [DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true)],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
-            text: $pwConfirmText)
+            text: $vm.pwConfirmText),
+          fieldStatus: vm.isFinePwConfirmed
         )
         
         InputField(
           labels: [DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true)],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_EMAIL,
-            text: $emailText)
+            text: $vm.emailText),
+          fieldStatus: vm.isFineEmail
         )
         
         InputField(
@@ -64,19 +66,41 @@ struct SignInView: View {
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_NICK,
-            text: $nicknameText)
-        ) { text -> Bool in
-          return 2...12 ~= text.count
-        }
+            text: $vm.nicknameText),
+          fieldStatus: vm.isFineNickname
+        )
         
         Button(I18N.L_N_SIVC_BTN_CONF) {
-          guard !idText.isEmpty && !pwText.isEmpty && !pwConfirmText.isEmpty && !emailText.isEmpty && !nicknameText.isEmpty else {
+          guard vm.isFineFields else {
+            vm.showNotEnoughAlert = true
             return
           }
           
-          isAlertShow = true
+          vm.showConfirmedAlert = true
         }
-        .alert(isPresented: $isAlertShow) {
+        .alert(isPresented: $vm.showConfirmedAlert) {
+          let dismissButton = Alert.Button.default(Text("OK")) {
+            isAlertShow = false
+          }
+          
+          return Alert(
+            title: Text("Congratulations!"),
+            message: Text("Made in 5 minute."),
+            dismissButton: dismissButton
+          )
+        }
+        .alert(isPresented: $vm.showNotEnoughAlert) {
+          let dismissButton = Alert.Button.default(Text("OK")) {
+            isAlertShow = false
+          }
+          
+          return Alert(
+            title: Text("Congratulations!"),
+            message: Text("Made in 5 minute."),
+            dismissButton: dismissButton
+          )
+        }
+        .alert(isPresented: $vm.showLogicAlert) {
           let dismissButton = Alert.Button.default(Text("OK")) {
             isAlertShow = false
           }
@@ -99,21 +123,25 @@ struct SignInView: View {
   struct InputField: View {
     let labels: [DescriptionText]
     let textField: CommonTextField
-    let validationHandler: ((String)->Bool)?
+    let fieldStatus: Bool
     
     @State var isFineText = false
     
-    init(labels: [DescriptionText], textField: CommonTextField, _ validationHandler: ((String) -> Bool)? = nil) {
+    init(
+      labels: [DescriptionText],
+      textField: CommonTextField,
+      fieldStatus: Bool
+    ) {
       self.labels = labels
       self.textField = textField
-      self.validationHandler = validationHandler
+      self.fieldStatus = fieldStatus
     }
     
     var body: some View {
       VStack(alignment: .leading, spacing: 4) {
         HStack(alignment: .center, spacing: 0) {
           Circle()
-            .foregroundColor(isFineText ? .blue : .red)
+            .foregroundColor(fieldStatus ? .blue : .red)
             .frame(width: 8,height: 8)
             .padding(4)
           if let label = labels.first {
@@ -128,9 +156,6 @@ struct SignInView: View {
         
         textField
           .padding(.horizontal)
-          .onChange(of: textField.text) { newValue in
-            self.isFineText = validationHandler?(newValue) ?? !newValue.isEmpty
-          }
       }
     }
   }

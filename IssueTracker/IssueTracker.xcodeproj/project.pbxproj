@@ -37,6 +37,7 @@
 		1BCB9BD52959599B0063B21A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763712951B17F00A1CD8C /* AppState.swift */; };
 		1BCB9BD6295959AA0063B21A /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7636F2951B16C00A1CD8C /* UserState.swift */; };
 		1BCB9BD829595B5C0063B21A /* InitialUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB9BD729595B5C0063B21A /* InitialUITest.swift */; };
+		1BCB9BDA2959701A0063B21A /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB9BD92959701A0063B21A /* SignInViewModel.swift */; };
 		1BF763702951B16C00A1CD8C /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7636F2951B16C00A1CD8C /* UserState.swift */; };
 		1BF763722951B17F00A1CD8C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763712951B17F00A1CD8C /* AppState.swift */; };
 		1BF763742951B3D300A1CD8C /* UserStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763732951B3D300A1CD8C /* UserStateModel.swift */; };
@@ -95,6 +96,7 @@
 		1BCB9BCD295950B20063B21A /* RELEASE.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = RELEASE.xcconfig; sourceTree = "<group>"; };
 		1BCB9BD0295951530063B21A /* HTTPConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPConnection.swift; sourceTree = "<group>"; };
 		1BCB9BD729595B5C0063B21A /* InitialUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialUITest.swift; sourceTree = "<group>"; };
+		1BCB9BD92959701A0063B21A /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		1BF7636F2951B16C00A1CD8C /* UserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		1BF763712951B17F00A1CD8C /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1BF763732951B3D300A1CD8C /* UserStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateModel.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 				1B559121294FFD580027AA34 /* LoginView.swift */,
 				1B8386632953458700937BBB /* SignInView.swift */,
 				1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */,
+				1BCB9BD92959701A0063B21A /* SignInViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				1B5590ED294FED120027AA34 /* IssueTracker.xcdatamodeld in Sources */,
 				1BF7637D2951CC6100A1CD8C /* HomeView.swift in Sources */,
 				1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */,
+				1BCB9BDA2959701A0063B21A /* SignInViewModel.swift in Sources */,
 				1B559138295012360027AA34 /* SystemImages.swift in Sources */,
 				1BF763702951B16C00A1CD8C /* UserState.swift in Sources */,
 				1B8386642953458700937BBB /* SignInView.swift in Sources */,

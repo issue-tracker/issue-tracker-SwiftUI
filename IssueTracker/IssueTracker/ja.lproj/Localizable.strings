@@ -62,6 +62,12 @@ L_N_SIVC_LB_NICK="ニックネーム";
 L_N_SIVC_LB_NICK_DESC="他のユーザーと重複しない別名を入力してください.";
 L_N_SIVC_TXTF_NICK="ニックネーム";
 L_N_SIVC_BTN_CONF="登録完了";
+L_N_SIVC_ALERT_CONF_TITLE="おめでとうございます!";
+L_N_SIVC_ALERT_CONF_MSG="会員登録が完了しました. ようこそ.";
+L_N_SIVC_ALERT_NOTENOUGH_TITLE="警告";
+L_N_SIVC_ALERT_NOTENOUGH_MSG="必須値をすべて入力していません. もう一度確認してください.";
+L_N_SIVC_ALERT_ERROR_TITLE="Error";
+L_N_SIVC_ALERT_ERROR_MSG="未定義エラーが発生しました. 再確認お願いします.";
 
 // Settings - General
 

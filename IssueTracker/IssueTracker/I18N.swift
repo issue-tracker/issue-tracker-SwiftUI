@@ -25,6 +25,12 @@ struct I18N {
     static let L_N_SIVC_LB_NICK_DESC = "L_N_SIVC_LB_NICK_DESC".localized
     static let L_N_SIVC_TXTF_NICK = "L_N_SIVC_TXTF_NICK".localized
     static let L_N_SIVC_BTN_CONF = "L_N_SIVC_BTN_CONF".localized
+    static let L_N_SIVC_ALERT_CONF_TITLE = "L_N_SIVC_ALERT_CONF_TITLE".localized
+    static let L_N_SIVC_ALERT_CONF_MSG = "L_N_SIVC_ALERT_CONF_MSG".localized
+    static let L_N_SIVC_ALERT_NOTENOUGH_TITLE = "L_N_SIVC_ALERT_NOTENOUGH_TITLE".localized
+    static let L_N_SIVC_ALERT_NOTENOUGH_MSG = "L_N_SIVC_ALERT_NOTENOUGH_MSG".localized
+    static let L_N_SIVC_ALERT_ERROR_TITLE = "L_N_SIVC_ALERT_ERROR_TITLE".localized
+    static let L_N_SIVC_ALERT_ERROR_MSG = "L_N_SIVC_ALERT_ERROR_MSG".localized
 
     // Settings - General
     static let M_ST_SVC_TCELL_GENERAL = "M_ST_SVC_TCELL_GENERAL".localized
