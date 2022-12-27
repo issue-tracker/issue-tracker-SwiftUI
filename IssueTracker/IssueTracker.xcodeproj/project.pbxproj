@@ -24,6 +24,9 @@
 		1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913A295015F50027AA34 /* View+Constrants.swift */; };
 		1B55913E295016A60027AA34 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913D295016A60027AA34 /* CommonButton.swift */; };
 		1B8386642953458700937BBB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8386632953458700937BBB /* SignInView.swift */; };
+		1B9268122959D18100BF2A2A /* HTTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */; };
+		1B9268132959D18D00BF2A2A /* HTTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */; };
+		1B926815295A605900BF2A2A /* SignInValidationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B926814295A605900BF2A2A /* SignInValidationModel.swift */; };
 		1BCB9BC6295940BE0063B21A /* HTTPRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB9BC5295940BE0063B21A /* HTTPRequestModel.swift */; };
 		1BCB9BC8295940F70063B21A /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB9BC7295940F70063B21A /* URLRequestBuilder.swift */; };
 		1BCB9BC929594B970063B21A /* HTTPRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCB9BC5295940BE0063B21A /* HTTPRequestModel.swift */; };
@@ -90,6 +93,8 @@
 		1B55913A295015F50027AA34 /* View+Constrants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Constrants.swift"; sourceTree = "<group>"; };
 		1B55913D295016A60027AA34 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		1B8386632953458700937BBB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseModel.swift; sourceTree = "<group>"; };
+		1B926814295A605900BF2A2A /* SignInValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInValidationModel.swift; sourceTree = "<group>"; };
 		1BCB9BC5295940BE0063B21A /* HTTPRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestModel.swift; sourceTree = "<group>"; };
 		1BCB9BC7295940F70063B21A /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		1BCB9BCB295950750063B21A /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
@@ -211,6 +216,7 @@
 				1B8386632953458700937BBB /* SignInView.swift */,
 				1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */,
 				1BCB9BD92959701A0063B21A /* SignInViewModel.swift */,
+				1B926814295A605900BF2A2A /* SignInValidationModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 				1BF763762951B3DF00A1CD8C /* AppStateModel.swift */,
 				1BCB9BC5295940BE0063B21A /* HTTPRequestModel.swift */,
 				1BCB9BC7295940F70063B21A /* URLRequestBuilder.swift */,
+				1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -475,6 +482,7 @@
 				1BF763742951B3D300A1CD8C /* UserStateModel.swift in Sources */,
 				1BCB9BCC295950750063B21A /* URL+Extensions.swift in Sources */,
 				1B559126294FFE610027AA34 /* CommonTextField.swift in Sources */,
+				1B9268122959D18100BF2A2A /* HTTPResponseModel.swift in Sources */,
 				1B55913429500D7B0027AA34 /* I18N.swift in Sources */,
 				1B55913E295016A60027AA34 /* CommonButton.swift in Sources */,
 				1B5590ED294FED120027AA34 /* IssueTracker.xcdatamodeld in Sources */,
@@ -489,6 +497,7 @@
 				1BF7637A2951C4F100A1CD8C /* MainView.swift in Sources */,
 				1B55913629500D950027AA34 /* Localizable+Extensions.swift in Sources */,
 				1BCB9BC8295940F70063B21A /* URLRequestBuilder.swift in Sources */,
+				1B926815295A605900BF2A2A /* SignInValidationModel.swift in Sources */,
 				1B5590EF294FED120027AA34 /* ContentView.swift in Sources */,
 				1BF763722951B17F00A1CD8C /* AppState.swift in Sources */,
 				1B559122294FFD580027AA34 /* LoginView.swift in Sources */,
@@ -502,6 +511,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BCB9BC929594B970063B21A /* HTTPRequestModel.swift in Sources */,
+				1B9268132959D18D00BF2A2A /* HTTPResponseModel.swift in Sources */,
 				1BCB9BD22959528B0063B21A /* URL+Extensions.swift in Sources */,
 				1BCB9BD6295959AA0063B21A /* UserState.swift in Sources */,
 				1BCB9BD52959599B0063B21A /* AppState.swift in Sources */,

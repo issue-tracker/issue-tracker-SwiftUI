@@ -26,6 +26,7 @@ struct CommonButton: View {
         Text(buttonTitle)
         Spacer()
       }
+      .toCommon()
     }
   }
 }
@@ -49,6 +50,5 @@ extension View {
 struct CommonButton_Previews: PreviewProvider {
   static var previews: some View {
     CommonButton(buttonTitle: I18N.L_N_LVC_BTN_LOGIN)
-      .toCommon()
   }
 }

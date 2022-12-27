@@ -39,7 +39,7 @@ UIKit 으로 개발된 프로젝트는 [링크](https://github.com/issue-tracker
 
 ## ✍️ Coding Convention
 
-* 컨텐츠를 최초 정의하는 View 구조체는 한눈에 뷰의 구조를 파악할 수 있도록 간단/명확하게 해야 합니다(코드 가독성 증가).
+* 컨텐츠를 최초 정의하는 View 구조체는 한눈에 뷰의 구조를 파악할 수 있도록 간단/명확하게 해야 한다(코드 가독성 증가).
 
 ```swift
 struct ContentView: View {
@@ -84,13 +84,49 @@ struct ContentView: View {
 ```swift
 /// Not Recommended
 private var customFont: UIFont {
-  isBold ? UIFont.boldSystemFont(ofSize: 15) : UIFont.preferredFont(forTextStyle: .footnote)
+  isBold 
+  ? UIFont.boldSystemFont(ofSize: 15) 
+  : UIFont.preferredFont(forTextStyle: .footnote)
 }
 /// Recommended
 private var customFont: UIFont {
   isBold
   ? UIFont.boldSystemFont(ofSize: 15)
   : UIFont.preferredFont(forTextStyle: .footnote)
+}
+```
+
+* ViewModel 은 View 의 상태값들을 관리합니다. 관리되는 상태값은 ViewModel 에서 업데이트 되거나 @Binding 을 통해 업데이트 되어야 합니다.
+  * 이는 상태값이 오작동할 경우 View 에 모든 로직이 포함되어 있다면 유지보수성이 떨어지고, 기능을 수정해야 할 경우 고려해야 할 것들이 많아진다는 판단에 의거함.
+
+```swift
+class ViewModel {
+  @Published
+  var text: String = "" {
+    willSet { newValue in
+      self.validation(newValue)
+    }
+  }
+  
+  private func validation(_ newValue: String) {
+    if newValue.count >= 10 {
+      // 상태값이 ViewModel 에 의해 업데이트 됩니다.
+      text = newValue 
+    }
+  }
+}
+
+
+
+struct ContentView: View {
+  let vm = ViewModel()
+  
+  var body: some View {
+    VStack {
+      // 상태값이 @Binding 을 통해 업데이트 됩니다.
+      TextField(text: $vm.text) 
+    }
+  }
 }
 ```
 
@@ -108,3 +144,6 @@ private var customFont: UIFont {
   - 모델은 @State 프로퍼티만, 뷰는 @Binding 프로퍼티만 가집니다.
   - 모델 객체는 Unit-Test 를 통해 검증합니다.
   - UIKit 클래스가 UI-Test 의 타겟으로 설정되는 것과 마찬가지로 SwiftUI 를 사용하는 View, Style, Shape 등은 Unit-Test 가 아닌 UI-Test 타겟입니다.
+* Commit 주기를 짧고 간결하게 할 수 있도록 연습
+  - 커밋 주기가 짧으면 커밋을 수정해야 할 경우 작업이 더 간단해질 것으로 예상.
+  - 하지만 필요한 작업이라고 판단된다면 유연성을 발휘할 필요가 있음 

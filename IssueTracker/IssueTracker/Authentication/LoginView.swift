@@ -35,7 +35,6 @@ struct LoginView: View {
           actionHandler: {
             userState.isLogin = true
           })
-        .toCommon()
         .loginShadow()
         
         HStack(alignment: .center, spacing: spacing) {
@@ -58,9 +57,13 @@ struct LoginView: View {
         }
         .padding(EdgeInsets(top: 0, leading: 32, bottom: 16, trailing: 32))
         
-        CommonButton(buttonTitle: I18N.L_N_LVC_BTN_SIGNIN_OAUTH)
-          .font(.title2)
-          .foregroundColor(.gray)
+        Button(
+          action: { },
+          label: {
+            Text(I18N.L_N_LVC_BTN_SIGNIN_OAUTH)
+              .font(.title2)
+              .foregroundColor(.gray)
+          })
         
         HStack(spacing: spacing) {
           Button(action: {

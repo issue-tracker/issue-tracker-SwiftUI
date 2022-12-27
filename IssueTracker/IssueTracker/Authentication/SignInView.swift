@@ -16,7 +16,8 @@ struct SignInView: View {
         InputField(
           labels: [
             DescriptionText(text: I18N.L_N_SIVC_LB_ID, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_ID_DESC)
+            DescriptionText(text: I18N.L_N_SIVC_LB_ID_DESC),
+            DescriptionText(text: vm.idMessage),
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_ID,
@@ -27,17 +28,19 @@ struct SignInView: View {
         InputField(
           labels: [
             DescriptionText(text: I18N.L_N_SIVC_LB_PW, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_PW_DESC)
+            DescriptionText(text: I18N.L_N_SIVC_LB_PW_DESC),
+            DescriptionText(text: vm.pwMessage),
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_PW,
             text: $vm.pwText),
-          fieldStatus: vm.isFinePw
+          fieldStatus: vm.isFinePW
         )
         
         InputField(
           labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true)
+            DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true),
+            DescriptionText(text: vm.pwConfirmedMessage),
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
@@ -47,7 +50,8 @@ struct SignInView: View {
         
         InputField(
           labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true)
+            DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true),
+            DescriptionText(text: vm.emailMessage),
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_EMAIL,
@@ -58,7 +62,8 @@ struct SignInView: View {
         InputField(
           labels: [
             DescriptionText(text: I18N.L_N_SIVC_LB_NICK, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_NICK_DESC)
+            DescriptionText(text: I18N.L_N_SIVC_LB_NICK_DESC),
+            DescriptionText(text: vm.nicknameMessage),
           ],
           textField: CommonTextField(
             placeHolder: I18N.L_N_SIVC_TXTF_NICK,
@@ -66,54 +71,29 @@ struct SignInView: View {
           fieldStatus: vm.isFineNickname
         )
         
-        Button(I18N.L_N_SIVC_BTN_CONF) {
-          guard vm.isFineFields else {
-            vm.showNotEnoughAlert = true
-            return
-          }
-          
-          vm.showConfirmedAlert = true
+        CommonButton(buttonTitle: I18N.L_N_SIVC_BTN_CONF) {
+          vm.registerUser()
         }
-        .alert(isPresented: $vm.showConfirmedAlert) {
-          let dismissButton = Alert.Button.default(Text("OK")) {
-            vm.showConfirmedAlert = false
+        .alert(
+          vm.alertType.getTitle(),
+          isPresented: $vm.showAlert,
+          presenting: vm.alertType,
+          actions: { alertType in
+            Button {
+              vm.showAlert = false
+            } label: {
+              Text("확인")
+            }
+          }, message: { alertType in
+            Text(alertType.getMessage())
           }
-          
-          return Alert(
-            title: Text("Congratulations!"),
-            message: Text("Made in 5 minute."),
-            dismissButton: dismissButton
-          )
-        }
-        .alert(isPresented: $vm.showNotEnoughAlert) {
-          let dismissButton = Alert.Button.default(Text("OK")) {
-            vm.showNotEnoughAlert = false
-          }
-          
-          return Alert(
-            title: Text("Congratulations!"),
-            message: Text("Made in 5 minute."),
-            dismissButton: dismissButton
-          )
-        }
-        .alert(isPresented: $vm.showLogicAlert) {
-          let dismissButton = Alert.Button.default(Text("OK")) {
-            vm.showLogicAlert = false
-          }
-          
-          return Alert(
-            title: Text("Congratulations!"),
-            message: Text("Made in 5 minute."),
-            dismissButton: dismissButton
-          )
-        }
-        .padding(EdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0))
+        )
+        .padding(16)
       }
     }
 #if targetEnvironment(macCatalyst)
     .padding()
 #endif
-    
   }
   
   struct InputField: View {
@@ -140,9 +120,7 @@ struct SignInView: View {
           .frame(width: 8,height: 8)
         .padding(4)
         VStack(alignment: .leading, spacing: 4) {
-          labels.first
-          
-          if labels.count >= 2, let label = labels.last {
+          ForEach(labels) { label in
             label
           }
           
@@ -153,7 +131,9 @@ struct SignInView: View {
     }
   }
   
-  struct DescriptionText: View {
+  struct DescriptionText: View, Identifiable {
+    var id: UUID = .init()
+    
     private let text: String
     private let isBold: Bool
     
