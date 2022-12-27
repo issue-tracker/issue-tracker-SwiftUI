@@ -12,7 +12,10 @@ struct CommonButton: View {
   let buttonTitle: String
   var actionHandler: (()->Void)?
   
-  init(buttonTitle: String, actionHandler: (() -> Void)? = nil) {
+  init(
+    buttonTitle: String,
+    actionHandler: (() -> Void)? = nil
+  ) {
     self.buttonTitle = buttonTitle
     self.actionHandler = actionHandler
   }
@@ -36,8 +39,8 @@ struct CommonHorizontalButtonModifier: ViewModifier {
     content
       .padding()
       .foregroundColor(Color.white)
-      .background(Color.blue.opacity(0.8))
-      .clipShape(RoundedRectangle(cornerRadius: content.spacing))
+      .background(content.commonTouchFieldBackground)
+      .clipShape(content.commonInputFieldRoundedShape)
   }
 }
 

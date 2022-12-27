@@ -32,6 +32,7 @@ struct SignInView: View {
             DescriptionText(text: vm.pwMessage),
           ],
           textField: CommonTextField(
+            isSecure: true,
             placeHolder: I18N.L_N_SIVC_TXTF_PW,
             text: $vm.pwText),
           fieldStatus: vm.isFinePW
@@ -43,6 +44,7 @@ struct SignInView: View {
             DescriptionText(text: vm.pwConfirmedMessage),
           ],
           textField: CommonTextField(
+            isSecure: true,
             placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
             text: $vm.pwConfirmText),
           fieldStatus: vm.isFinePwConfirmed
