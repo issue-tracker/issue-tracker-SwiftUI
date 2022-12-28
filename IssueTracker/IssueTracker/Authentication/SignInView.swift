@@ -13,65 +13,85 @@ struct SignInView: View {
   var body: some View {
     ScrollView {
       VStack(spacing: 15) {
-        InputField(
-          labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_ID, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_ID_DESC),
-            DescriptionText(text: vm.idMessage),
-          ],
-          textField: CommonTextField(
-            placeHolder: I18N.L_N_SIVC_TXTF_ID,
-            text: $vm.idText),
-          fieldStatus: vm.isFineId
-        )
+        HStack(alignment: .top) {
+          CircleView(
+            timer: $vm.idTimer,
+            status: $vm.idStatus)
+          InputField(
+            labels: [
+              DescriptionText(text: I18N.L_N_SIVC_LB_ID, isBold: true),
+              DescriptionText(text: I18N.L_N_SIVC_LB_ID_DESC),
+              DescriptionText(text: vm.idMessage),
+            ],
+            textField: CommonTextField(
+              placeHolder: I18N.L_N_SIVC_TXTF_ID,
+              text: $vm.idText)
+          )
+        }
         
-        InputField(
-          labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_PW, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_PW_DESC),
-            DescriptionText(text: vm.pwMessage),
-          ],
-          textField: CommonTextField(
-            isSecure: true,
-            placeHolder: I18N.L_N_SIVC_TXTF_PW,
-            text: $vm.pwText),
-          fieldStatus: vm.isFinePW
-        )
+        HStack(alignment: .top) {
+          CircleView(
+            timer: .constant(nil),
+            status: $vm.pwStatus)
+          InputField(
+            labels: [
+              DescriptionText(text: I18N.L_N_SIVC_LB_PW, isBold: true),
+              DescriptionText(text: I18N.L_N_SIVC_LB_PW_DESC),
+              DescriptionText(text: vm.pwMessage),
+            ],
+            textField: CommonTextField(
+              isSecure: true,
+              placeHolder: I18N.L_N_SIVC_TXTF_PW,
+              text: $vm.pwText)
+          )
+        }
         
-        InputField(
-          labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true),
-            DescriptionText(text: vm.pwConfirmedMessage),
-          ],
-          textField: CommonTextField(
-            isSecure: true,
-            placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
-            text: $vm.pwConfirmText),
-          fieldStatus: vm.isFinePwConfirmed
-        )
+        HStack(alignment: .top) {
+          CircleView(
+            timer: .constant(nil),
+            status: $vm.pwConfirmedStatus)
+          InputField(
+            labels: [
+              DescriptionText(text: I18N.L_N_SIVC_LB_PW_CONF, isBold: true),
+              DescriptionText(text: vm.pwConfirmedMessage),
+            ],
+            textField: CommonTextField(
+              isSecure: true,
+              placeHolder: I18N.L_N_SIVC_TXTF_PW_CONF,
+              text: $vm.pwConfirmText)
+          )
+        }
         
-        InputField(
-          labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true),
-            DescriptionText(text: vm.emailMessage),
-          ],
-          textField: CommonTextField(
-            placeHolder: I18N.L_N_SIVC_TXTF_EMAIL,
-            text: $vm.emailText),
-          fieldStatus: vm.isFineEmail
-        )
+        HStack(alignment: .top) {
+          CircleView(
+            timer: $vm.emailTimer,
+            status: $vm.emailStatus)
+          InputField(
+            labels: [
+              DescriptionText(text: I18N.L_N_SIVC_LB_EMAIL, isBold: true),
+              DescriptionText(text: vm.emailMessage),
+            ],
+            textField: CommonTextField(
+              placeHolder: I18N.L_N_SIVC_TXTF_EMAIL,
+              text: $vm.emailText)
+          )
+        }
         
-        InputField(
-          labels: [
-            DescriptionText(text: I18N.L_N_SIVC_LB_NICK, isBold: true),
-            DescriptionText(text: I18N.L_N_SIVC_LB_NICK_DESC),
-            DescriptionText(text: vm.nicknameMessage),
-          ],
-          textField: CommonTextField(
-            placeHolder: I18N.L_N_SIVC_TXTF_NICK,
-            text: $vm.nicknameText),
-          fieldStatus: vm.isFineNickname
-        )
+        HStack(alignment: .top) {
+          CircleView(
+            timer: $vm.nicknameTimer,
+            status: $vm.nicknameStatus)
+          InputField(
+            labels: [
+              DescriptionText(text: I18N.L_N_SIVC_LB_NICK, isBold: true),
+              DescriptionText(text: I18N.L_N_SIVC_LB_NICK_DESC),
+              DescriptionText(text: vm.nicknameMessage),
+            ],
+            textField: CommonTextField(
+              placeHolder: I18N.L_N_SIVC_TXTF_NICK,
+              text: $vm.nicknameText)
+          )
+        }
         
         CommonButton(buttonTitle: I18N.L_N_SIVC_BTN_CONF) {
           vm.registerUser()
@@ -101,35 +121,26 @@ struct SignInView: View {
   struct InputField: View {
     let labels: [DescriptionText]
     let textField: CommonTextField
-    let fieldStatus: Bool
     
     @State var isFineText = false
     
     init(
       labels: [DescriptionText],
-      textField: CommonTextField,
-      fieldStatus: Bool
+      textField: CommonTextField
     ) {
       self.labels = labels
       self.textField = textField
-      self.fieldStatus = fieldStatus
     }
     
     var body: some View {
-      HStack(alignment: .top, spacing: 0) {
-        Circle()
-          .foregroundColor(fieldStatus ? .blue : .red)
-          .frame(width: 8,height: 8)
-        .padding(4)
-        VStack(alignment: .leading, spacing: 4) {
-          ForEach(labels) { label in
-            label
-          }
-          
-          textField
+      VStack(alignment: .leading, spacing: 4) {
+        ForEach(labels) { label in
+          label
         }
-        .padding(.trailing, 16)
+        
+        textField
       }
+      .padding(.trailing, 16)
     }
   }
   
@@ -156,6 +167,24 @@ struct SignInView: View {
     var body: some View {
       Text(text)
         .font(Font(customFont))
+    }
+  }
+  
+  struct CircleView: View {
+    @Binding var timer: Timer?
+    @Binding var status: SignInViewModel.InputStatus
+    
+    var body: some View {
+      VStack {
+        if $timer.wrappedValue == nil {
+          Circle()
+            .foregroundColor($status.wrappedValue.getColor())
+        } else {
+          ProgressView()
+        }
+      }
+      .frame(width: 8,height: 8)
+      .padding(4)
     }
   }
 }
