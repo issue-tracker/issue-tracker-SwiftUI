@@ -23,6 +23,8 @@
 		1B559138295012360027AA34 /* SystemImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B559137295012360027AA34 /* SystemImages.swift */; };
 		1B55913B295015F50027AA34 /* View+Constrants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913A295015F50027AA34 /* View+Constrants.swift */; };
 		1B55913E295016A60027AA34 /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B55913D295016A60027AA34 /* CommonButton.swift */; };
+		1B5E82D7295B4AD90086DBF0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E82D6295B4AD90086DBF0 /* LoginViewModel.swift */; };
+		1B5E82DA295BE1B90086DBF0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E82D9295BE1B90086DBF0 /* String+Extensions.swift */; };
 		1B8386642953458700937BBB /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8386632953458700937BBB /* SignInView.swift */; };
 		1B9268122959D18100BF2A2A /* HTTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */; };
 		1B9268132959D18D00BF2A2A /* HTTPResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */; };
@@ -92,6 +94,8 @@
 		1B559137295012360027AA34 /* SystemImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImages.swift; sourceTree = "<group>"; };
 		1B55913A295015F50027AA34 /* View+Constrants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Constrants.swift"; sourceTree = "<group>"; };
 		1B55913D295016A60027AA34 /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		1B5E82D6295B4AD90086DBF0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1B5E82D9295BE1B90086DBF0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1B8386632953458700937BBB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		1B9268112959D18100BF2A2A /* HTTPResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPResponseModel.swift; sourceTree = "<group>"; };
 		1B926814295A605900BF2A2A /* SignInValidationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInValidationModel.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		1B5590E6294FED120027AA34 /* IssueTracker */ = {
 			isa = PBXGroup;
 			children = (
+				1B5E82D8295BE19C0086DBF0 /* Foundation+Extensions */,
 				1BF7636E2951B15E00A1CD8C /* Shared */,
 				1B55913C2950163E0027AA34 /* View+Constants */,
 				1B559139295015E20027AA34 /* View+Extensions */,
@@ -213,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1B559121294FFD580027AA34 /* LoginView.swift */,
+				1B5E82D6295B4AD90086DBF0 /* LoginViewModel.swift */,
 				1B8386632953458700937BBB /* SignInView.swift */,
 				1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */,
 				1BCB9BD92959701A0063B21A /* SignInViewModel.swift */,
@@ -282,6 +288,14 @@
 				1B55913A295015F50027AA34 /* View+Constrants.swift */,
 			);
 			path = "View+Constants";
+			sourceTree = "<group>";
+		};
+		1B5E82D8295BE19C0086DBF0 /* Foundation+Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1B5E82D9295BE1B90086DBF0 /* String+Extensions.swift */,
+			);
+			path = "Foundation+Extensions";
 			sourceTree = "<group>";
 		};
 		1BF7636E2951B15E00A1CD8C /* Shared */ = {
@@ -491,7 +505,9 @@
 				1BCB9BDA2959701A0063B21A /* SignInViewModel.swift in Sources */,
 				1B559138295012360027AA34 /* SystemImages.swift in Sources */,
 				1BF763702951B16C00A1CD8C /* UserState.swift in Sources */,
+				1B5E82D7295B4AD90086DBF0 /* LoginViewModel.swift in Sources */,
 				1B8386642953458700937BBB /* SignInView.swift in Sources */,
+				1B5E82DA295BE1B90086DBF0 /* String+Extensions.swift in Sources */,
 				1B5590E8294FED120027AA34 /* IssueTrackerApp.swift in Sources */,
 				1BCB9BC6295940BE0063B21A /* HTTPRequestModel.swift in Sources */,
 				1BF7637A2951C4F100A1CD8C /* MainView.swift in Sources */,

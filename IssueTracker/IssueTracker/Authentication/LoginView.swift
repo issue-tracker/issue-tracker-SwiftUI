@@ -10,32 +10,43 @@ import SwiftUI
 /// V
 struct LoginView: View {
   
-  @State var idTextValue: String = ""
-  @State var passwordTextValue: String = ""
-  
   @EnvironmentObject
   var userState: UserState
+  
+  @ObservedObject
+  var vm = LoginViewModel()
   
   var body: some View {
     NavigationView {
       VStack(spacing: spacing) {
         Spacer()
         CommonTextField(
-          capImage: idTextValue.count > 0 ? Image.personWave2Fill : Image.personFill,
+          capImage: vm.idTextValue.count > 0 ? Image.personWave2Fill : Image.personFill,
           placeHolder: I18N.L_N_LVC_TXTF_ID,
-          text: $idTextValue)
+          text: $vm.idTextValue)
         
         CommonTextField(
-          capImage: passwordTextValue.count > 0 ? Image.lockOpen : Image.lock,
+          capImage: vm.passwordTextValue.count > 0 ? Image.lockOpen : Image.lock,
           placeHolder: I18N.L_N_LVC_TXTF_PW,
-          text: $passwordTextValue)
+          text: $vm.passwordTextValue)
         
         CommonButton(
           buttonTitle: I18N.L_N_LVC_BTN_LOGIN,
           actionHandler: {
-            userState.isLogin = true
+            vm.showAlert = true
           })
         .loginShadow()
+        .alert(
+          "Alert",
+          isPresented: $vm.showAlert,
+          actions: {
+            Button("OK") {
+              self.vm.showAlert = false
+            }
+          },
+          message: {
+            Text("Show Alerts")
+          })
         
         HStack(alignment: .center, spacing: spacing) {
           Button(action: {
