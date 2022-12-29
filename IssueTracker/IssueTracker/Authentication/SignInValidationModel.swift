@@ -11,10 +11,10 @@ class SignInValidationModel {
   
   private let responseModel = HTTPResponseModel()
   
-  func validationPW(_ text: String, message: inout String) -> Bool {
+  func validationPW(_ text: String) -> ValidationResult {
     let result = text.count >= 8
-    message = result ? "이상이 발견되지 않았습니다." : "입력값을 다시 확인해주시기 바랍니다."
-    return result
+    let message = result ? "이상이 발견되지 않았습니다." : "입력값을 다시 확인해주시기 바랍니다."
+    return ValidationResult(result: result, message: message)
   }
   
   func validateCommonInput(data: Data) -> ValidationResult {

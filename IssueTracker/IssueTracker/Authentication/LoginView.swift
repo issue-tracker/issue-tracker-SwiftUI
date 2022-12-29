@@ -103,6 +103,7 @@ struct LoginView: View {
       } // end of VStack
       .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
     } // end of NavigationView
+    .navigationTitle("Login")
   } // end of LoginView body
   
   struct ButtonImage: View {

@@ -50,6 +50,7 @@
 		1BD03B44295D624D00533A4D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E82D6295B4AD90086DBF0 /* LoginViewModel.swift */; };
 		1BD03B45295D625000533A4D /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD03B3C295C36F600533A4D /* LoginRequestModel.swift */; };
 		1BD03B46295D625900533A4D /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD03B40295D490B00533A4D /* LoginResponse.swift */; };
+		1BD03B49295E4FA300533A4D /* ErrorCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD03B3E295C3A2900533A4D /* ErrorCodes.swift */; };
 		1BF763702951B16C00A1CD8C /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF7636F2951B16C00A1CD8C /* UserState.swift */; };
 		1BF763722951B17F00A1CD8C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763712951B17F00A1CD8C /* AppState.swift */; };
 		1BF763742951B3D300A1CD8C /* UserStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF763732951B3D300A1CD8C /* UserStateModel.swift */; };
@@ -90,7 +91,6 @@
 		1B559104294FED140027AA34 /* IssueTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IssueTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B559117294FEE7D0027AA34 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1B559119294FF2FB0027AA34 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IssueTrackerUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1B559121294FFD580027AA34 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		1B559125294FFE610027AA34 /* CommonTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonTextField.swift; sourceTree = "<group>"; };
 		1B55912D29500C090027AA34 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -234,7 +234,6 @@
 				1BD03B3C295C36F600533A4D /* LoginRequestModel.swift */,
 				1BD03B40295D490B00533A4D /* LoginResponse.swift */,
 				1B8386632953458700937BBB /* SignInView.swift */,
-				1B559120294FFD580027AA34 /* IssueTrackerUITests-Bridging-Header.h */,
 				1BCB9BD92959701A0063B21A /* SignInViewModel.swift */,
 				1B926814295A605900BF2A2A /* SignInValidationModel.swift */,
 			);
@@ -555,6 +554,7 @@
 				1BCB9BCA29594B970063B21A /* URLRequestBuilder.swift in Sources */,
 				1BF763752951B3D300A1CD8C /* UserStateModel.swift in Sources */,
 				1BD03B45295D625000533A4D /* LoginRequestModel.swift in Sources */,
+				1BD03B49295E4FA300533A4D /* ErrorCodes.swift in Sources */,
 				1BF763782951B3DF00A1CD8C /* AppStateModel.swift in Sources */,
 				1BCB9BD1295951530063B21A /* HTTPConnection.swift in Sources */,
 			);
@@ -871,7 +871,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "IssueTracker/Authentication/IssueTrackerUITests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -901,7 +900,6 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "IssueTracker/Authentication/IssueTrackerUITests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = IssueTracker;

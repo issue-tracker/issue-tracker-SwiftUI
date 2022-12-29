@@ -13,7 +13,7 @@ class SignInViewModel: ObservableObject {
   @Published var idStatus: InputStatus = .error
   @Published var idTimer: Timer?
   @Published var idText: String = "" {
-    didSet { idValidation() }
+    didSet { IDValidation() }
   }
   
   @Published var pwMessage: String = ""
@@ -54,56 +54,62 @@ class SignInViewModel: ObservableObject {
   // MARK: - [END] Models
   
   // MARK: - [START] id Validation
-  private func idValidation() {
-    guard 4...12 ~= idText.count else {
-      idMessage = "입력값이 부족하거나 많습니다."
-      idStatus = .error
-      idTimer = nil
-      return
-    }
+  private func IDValidation() {
     
-    if idTimer != nil {
-      idTimer = nil
-    }
-    
-    requestIdExists()
     idTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
       self.idTimer = nil
     }
+    
+    if 4...12 ~= idText.count {
+      
+      requestIDExists()
+      
+    } else {
+      
+      idMessage = "입력값이 부족하거나 많습니다."
+      idStatus = .error
+      idTimer = nil
+    }
   }
   
-  private func requestIdExists() {
+  private func requestIDExists() {
     let urlPath = ["signin-id", idText, "exists"]
     
-    requestModel?
-      .request(pathArray: urlPath) { result, _ in
-        DispatchQueue.main.async {
-          self.idTimer = nil
-          switch result {
-          case .success(let data):
-            let result = self.validationModel
-              .validateCommonInput(data: data)
-            self.idMessage = result.message
-            self.idStatus = result.result ? .fine : .error
-          case .failure(_):
-            self.idStatus = .error
-            self.idMessage = "Request Failed..."
-          }
-        }
+    requestModel?.request(pathArray: urlPath) { result, _ in
+      
+      DispatchQueue.main.async {
+        
+        self.idTimer = nil
+        self.updateIDState(result)
       }
+    }
+  }
+  
+  private func updateIDState(_ result: Result<Data, Error>) {
+    guard let data = try? result.get() else {
+      
+      idMessage = "Request Failed..."
+      idStatus = .error
+      return
+    }
+    
+    let validationResult = validationModel.validateCommonInput(data: data)
+    idMessage = validationResult.message
+    idStatus = validationResult.result ? .fine : .error
   }
   // MARK: - [END] id Validation
   
   // MARK: - [START] PW Validation
   private func pwValidation() {
-    let result = validationModel
-      .validationPW(pwText, message: &pwMessage)
-    pwStatus = result ? .fine : .error
-    pwMessage = result ? "이상이 발견되지 않았습니다." : "입력값이 부족하거나 많습니다."
+    let result = validationModel.validationPW(pwText)
+    
+    pwStatus = result.result ? .fine : .error
+    pwMessage = result.message
   }
   
   private func pwConfirmedValidation() {
     let result = (pwText == pwConfirmText)
+    
     pwConfirmedStatus = result ? .fine : .error
     pwConfirmedMessage = result ? "이상이 발견되지 않았습니다." : "동일한 비밀번호를 입력해주시기 바랍니다."
   }
@@ -111,119 +117,127 @@ class SignInViewModel: ObservableObject {
   
   // MARK: - [START] Email Validation
   private func emailValidation() {
-    guard emailText.isValidEmail() else {
-      emailMessage = "정확한 형식의 이메일을 입력해주시기 바랍니다."
-      emailStatus = .error
-      emailTimer = nil
-      return
-    }
     
-    if emailTimer != nil {
-      emailTimer = nil
-    }
-    
-    requestEmailExists()
     emailTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
       self.emailTimer = nil
+    }
+    
+    if emailText.isValidEmail() {
+      
+      requestEmailExists()
+      
+    } else {
+      
+      emailMessage = "정확한 형식의 이메일을 입력해주시기 바랍니다."
+      emailStatus = .error
     }
   }
   
   private func requestEmailExists() {
     let urlPath = ["email", emailText, "exists"]
     
-    requestModel?
-      .request(pathArray: urlPath) { result, _ in
+    requestModel?.request(pathArray: urlPath) { result, _ in
+      
+      DispatchQueue.main.async {
+        
         self.emailTimer = nil
-        DispatchQueue.main.async {
-          switch result {
-          case .success(let data):
-            let result = self.validationModel
-              .validateCommonInput(data: data)
-            self.emailMessage = result.message
-            self.emailStatus = result.result ? .fine : .error
-          case .failure(_):
-            self.emailStatus = .error
-            self.emailMessage = "Request Failed..."
-          }
-        }
+        self.updateEmailStatus(result)
       }
+    }
+  }
+  
+  private func updateEmailStatus(_ result: Result<Data, Error>) {
+    guard let data = try? result.get() else {
+      
+      emailMessage = "Request Failed..."
+      emailStatus = .error
+      
+      return
+    }
+    
+    let validationResult = validationModel.validateCommonInput(data: data)
+    emailMessage = validationResult.message
+    emailStatus = validationResult.result ? .fine : .error
   }
   // MARK: - [END] Email Validation
   
   // MARK: - [START] Nickname Validation
   private func nicknameValidation() {
-    guard 2...12 ~= nicknameText.count else {
+    
+    nicknameTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
+      self.nicknameTimer = nil
+    }
+    
+    if 2...12 ~= nicknameText.count {
+      
+      requestNicknameExists()
+      
+    } else {
+      
       nicknameMessage = "입력값이 부족하거나 많습니다."
       nicknameStatus = .error
       nicknameTimer = nil
-      return
-    }
-    
-    if nicknameTimer != nil {
-      nicknameTimer = nil
-    }
-    
-    requestNicknameExists()
-    nicknameTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
-      self.nicknameTimer = nil
     }
   }
   
   private func requestNicknameExists() {
     let urlPath = ["nickname", nicknameText, "exists"]
     
-    requestModel?
-      .request(pathArray: urlPath) { result, response in
-        DispatchQueue.main.async {
-          self.nicknameTimer = nil
-          switch result {
-          case .success(let data):
-            let result = self.validationModel
-              .validateCommonInput(data: data)
-            self.nicknameMessage = result.message
-            self.nicknameStatus = result.result ? .fine : .error
-          case .failure(_):
-            self.nicknameStatus = .error
-            self.nicknameMessage = "Request Failed..."
-          }
-        }
+    requestModel?.request(pathArray: urlPath) { result, response in
+      
+      DispatchQueue.main.async {
+        
+        self.nicknameTimer = nil
+        self.updateNicknameStatus(result)
       }
+    }
+  }
+  
+  private func updateNicknameStatus(_ result: Result<Data, Error>) {
+    guard let data = try? result.get() else {
+      
+      nicknameMessage = "Request Failed..."
+      nicknameStatus = .error
+      
+      return
+    }
+    
+    let validationResult = validationModel.validateCommonInput(data: data)
+    nicknameMessage = validationResult.message
+    nicknameStatus = validationResult.result ? .fine : .error
   }
   // MARK: - [END] Nickname Validation
   
   // MARK: - [START] Register User. SignIn
   func registerUser() {
     guard isFineFields else {
+      
       alertType = .notEnough
       showAlert = true
+      
       return
     }
     
-    guard let requestModel else { return }
-    
-    requestModel.builder.setBody([
-      "signInId": idText,
-      "password": pwText,
-      "email": emailText,
-      "nickname": nicknameText,
-      "profileImage": ""
-    ])
-    requestModel.builder.setHTTPMethod("post")
-    requestModel.request(pathArray: ["members", "new", "general"]) { result, response in
+    requestModel?.builder
+      .setBody(signInRequestBody)
+    requestModel?.builder
+      .setHTTPMethod("post")
+    requestModel?.request(pathArray: ["new", "general"]) { result, response in
+      
       DispatchQueue.main.async {
-        switch result {
-        case .success(let data):
+        
+        if let data = try? result.get() {
+          let errorResponse = HTTPResponseModel().getErrorCodeAndMessageResponse(from: data)
           
-          var result = false
-          if
-            let res = HTTPResponseModel().getDecoded(from: data, as: PostResponse.self),
-            200...299 ~= res.status
-          {
-            result = true
+          if let message = errorResponse.getErrorMessage() {
+            self.alertType = .logic
+            self.alertMessage = message
+          } else {
+            self.alertType = .confirm
           }
           
-          self.alertType = result ? .confirm : .logic
-        case .failure(_):
+        } else {
+          
           self.alertType = .logic
         }
         
@@ -233,7 +247,20 @@ class SignInViewModel: ObservableObject {
   }
   
   var isFineFields: Bool {
-    return idStatus == .fine && pwStatus == .fine && pwConfirmedStatus == .fine && emailStatus == .fine && nicknameStatus == .fine
+    [idStatus, pwStatus, pwConfirmedStatus, emailStatus, nicknameStatus]
+      .reduce(true, {
+        $0 && ($1 == .fine)
+      })
+  }
+  
+  var signInRequestBody: [String: String] {
+    [
+      "signInId": idText,
+      "password": pwText,
+      "email": emailText,
+      "nickname": nicknameText,
+      "profileImage": ""
+    ]
   }
   
   // MARK: - Enums
@@ -264,13 +291,6 @@ class SignInViewModel: ObservableObject {
       }
     }
   }
-}
-
-struct SignInResponse: Decodable {
-  var id: Int
-  var email: String
-  var nickname: String
-  var profileImage: String
 }
 
 struct PostResponse: Decodable {

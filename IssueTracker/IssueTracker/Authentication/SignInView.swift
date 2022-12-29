@@ -10,6 +10,8 @@ import SwiftUI
 struct SignInView: View {
   @ObservedObject var vm = SignInViewModel()
   
+  @Environment(\.dismiss) var dismiss
+  
   var body: some View {
     ScrollView {
       VStack(spacing: 15) {
@@ -103,6 +105,9 @@ struct SignInView: View {
           actions: { alertType in
             Button {
               vm.showAlert = false
+              if vm.alertType == .confirm {
+                dismiss()
+              }
             } label: {
               Text("확인")
             }
@@ -111,12 +116,12 @@ struct SignInView: View {
           }
         )
         .padding(16)
-      }
-    }
+      } // end of VStack
+    } // end of ScrollView
 #if targetEnvironment(macCatalyst)
     .padding()
 #endif
-  }
+  } // end of body
   
   struct InputField: View {
     let labels: [DescriptionText]

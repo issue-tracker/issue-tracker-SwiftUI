@@ -46,6 +46,13 @@ class HTTPResponseModel {
     return jsonObject?["errorCode"] as? Int
   }
   
+  func getErrorCodeAndMessageResponse(from data: Data) -> ErrorResponse {
+    return ErrorResponse(
+      errorCode: getErrorCodeResponse(from: data),
+      message: getMessageResponse(from: data)
+    )
+  }
+  
   func getErrorCodeResponse(from result: Result<Data, Error>) -> Int? {
     guard let data = try? result.get() else {
       return nil
@@ -60,5 +67,19 @@ class HTTPResponseModel {
   
   func getDecoded<T: Decodable>(from result: Result<Data, Error>, as type: T.Type) -> T? {
     try? result.flatMap({ .success(self.getDecoded(from: $0, as: type)) }).get()
+  }
+  
+  struct ErrorResponse {
+    let errorCode: Int?
+    let message: String?
+    
+    /// [Notice] Only Use when alert. It is dissembling Error itself.
+    func getErrorMessage() -> String? {
+      if let errorCode {
+        return errorCode.decodeAsError()
+      } else {
+        return message
+      }
+    }
   }
 }
