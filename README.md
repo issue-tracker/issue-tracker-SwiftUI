@@ -39,6 +39,8 @@ UIKit 으로 개발된 프로젝트는 [링크](https://github.com/issue-tracker
 
 ## ✍️ Coding Convention
 
+> 아래의 모든 사항들은 **권장** 사항임을 유념해주시기 바랍니다. **가독성** 을 위해서라면 아래 사항을 무시해도 괜찮습니다.
+
 * 컨텐츠를 최초 정의하는 View 구조체는 한눈에 뷰의 구조를 파악할 수 있도록 간단/명확하게 해야 한다(코드 가독성 증가).
 
 ```swift
@@ -79,7 +81,6 @@ struct ContentView: View {
 ```
 
 * 모든 Device (모바일 포함) 에서의 가독성을 위해 한 Line 에 너무 긴 코드를 넣지는 않는다. 파라미터가 두 개 이상인 호출, 선언문은 줄바꿈을 이용한다거나 코드 자체를 다시 한번 확인하는 등의 노력을 기울이도록 한다.
-  * 위의 사항은 절대적인 것이 아닌 **권장**사항이다. 
 
 ```swift
 /// Not Recommended
@@ -129,6 +130,69 @@ struct ContentView: View {
   }
 }
 ```
+
+* keyword 로 시작하는 line 의 경우 keyword 로 시작하는 line 이라면 줄바꿈 하지 않는다. 변수명/함수명 등으로 시작하는 line 은 띄어준다.
+  * 반대로, 변수명/함수명 등으로 시작하는 line 의 경우 다음 line 이 keyword 로 시작하는 line 이라면 한 줄 띄어준다.
+  * 위의 모든 사항들과 관계없이 Mustache brace({}) 가 끝나는 line 뒤에 추가 작업이 있다면 무조건 한 줄 띄어준다.
+* 1 개의 line 에 '.' 를 2개 이상 넣지 않도록 하는 것을 권장한다.
+* 10 개 이상의 line 을 가진 함수나 괄호 등에 대해서는 마지막 괄호에 `end of ...` 를 통해 가독성을 확보하는 것을 권장한다.
+
+```swift
+func requestLogin(_ id: String,
+                  _ password: String,
+                  completionHandler:
+                  @escaping (Result<LoginResponse, RequestError>)->Void
+) { // '}' 뒤 이므로 줄 바꿈 권장.
+    
+    guard let model = requestModel else { return }
+    
+    model.builder.setBody(["id": id, "password": password])
+    model.builder.setHTTPMethod("POST")
+    model.request(pathArray: ["members", "signin"]) { result, response in
+      
+      guard let response = response as? HTTPURLResponse else {
+        
+        completionHandler(.failure(
+          self.unRecognizedResopnseError
+        ))
+        
+        return
+      }
+      
+      switch response.statusCode { // guard, case 는 keyword. 붙여주는 것을 권장.
+      case 401:
+        
+        completionHandler(.failure(
+          self.accessTokenError
+        ))
+        
+      case 200..<300:
+        do {
+          
+          completionHandler(
+            self.getResultFromData(
+              try result.get() // '.' 가 너무 많아지는 것을 방지하기 위해 줄 바꿈을 이용.
+            )
+          )
+          
+        } catch {
+          
+          completionHandler(.failure(
+            self.dataProcessingError
+          ))
+        } // end of do-catch
+        // '}' 뒤에 추가 작업이 있기 때문에 줄 바꿈. 
+      default:
+        
+        completionHandler(.failure(
+          RequestError.failedRequest
+        ))
+      } // end of switch
+    } // end of request
+  }
+
+```
+
 
 ## ❗️ Achievements
 

@@ -11,10 +11,13 @@ import SwiftUI
 struct LoginView: View {
   
   @EnvironmentObject
-  var userState: UserState
+  private var userState: UserState
   
   @ObservedObject
-  var vm = LoginViewModel()
+  private var vm = LoginViewModel()
+  
+  @AppStorage("accessToken")
+  private var accessToken: String = ""
   
   var body: some View {
     NavigationView {
@@ -41,7 +44,10 @@ struct LoginView: View {
           isPresented: $vm.showAlert,
           actions: {
             Button("OK") {
-              self.vm.showAlert = false
+              vm.showAlert = false
+              if vm.isLoginConfirmed {
+                userState.isLogin = true
+              }
             }
           },
           message: {
