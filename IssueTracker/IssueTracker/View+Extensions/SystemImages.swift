@@ -21,4 +21,12 @@ extension Image {
   static var lockOpen: Image {
     Image(systemName: "lock.open")
   }
+  
+  static var listBullet: Image {
+    Image(systemName: "list.bullet")
+  }
+  
+  static var gear: Image {
+    Image(systemName: "gear")
+  }
 }
