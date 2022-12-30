@@ -13,7 +13,7 @@ enum LoginRequestError: Error {
 }
 
 class LoginViewModel: ObservableObject {
-  
+  // MARK: - [START] States
   @Published
   var idTextValue: String = ""
   @Published
@@ -23,34 +23,48 @@ class LoginViewModel: ObservableObject {
   
   @Published
   var showAlert: Bool = false
+  var alertTitle: String = ""
   var alertMessage: String = ""
   
   @Published
   var accessToken: String?
   
+  enum AlertType {
+    case requestLogin, checkLogin, refreshAcessToken
+    
+    func getTitle() -> String {
+      return "작업 결과"
+    }
+  }
+  
+  // MARK: - [END] States
+  
+  // MARK: - [START] Models
   private let requestModel: LoginRequestModel = .init()
+  // MARK: - [END] States
   
   private var defaultErrorMessage = "알 수 없는 에러가 발생하였습니다. 다시 시도해주시기 바랍니다."
   
-  private func showAlert(_ error: LoginRequestError) {
+  // MARK: - [START] Alerts
+  private func updateAlertState(type: AlertType, _ error: LoginRequestError) {
     switch error {
-    case .processFailed(let message):
-      
-      alertMessage = message
-      
-    case .errorWithMessage(let message):
-      
-      alertMessage = message
-      
+    case .processFailed(let msg):
+      alertMessage = msg
+    case .errorWithMessage(let msg):
+      alertMessage = msg
     default:
-      
       alertMessage = defaultErrorMessage
     }
     
-    self.showAlert = true
+    alertTitle = type.getTitle()
+    
+    DispatchQueue.main.async { [weak self] in
+      self?.showAlert = true
+    }
   }
+  // MARK: - [END] Alerts
   
-  func requestLogin() {
+  func requestLogin(completionHandler: @escaping (Bool) -> Void) {
     
     requestModel.requestLogin(idTextValue, passwordTextValue) { result in
       
@@ -61,25 +75,25 @@ class LoginViewModel: ObservableObject {
         self.isLoginConfirmed = true
         
       case .failure(let failure):
-        
-        self.showAlert(failure)
+        self.updateAlertState(type: .requestLogin, failure)
       }
+      
+      completionHandler(self.isLoginConfirmed)
     }
   }
   
-  func checkAlreadyLogin() {
+  func checkAlreadyLogin(completionHandler: @escaping (Bool) -> Void) {
     
     requestModel.checkAlreadyLogin { result in
       
       switch result {
       case .success(_):
-        
         self.isLoginConfirmed = true
-        
       case .failure(let failure):
-        
-        self.showAlert(failure)
+        self.updateAlertState(type: .checkLogin, failure)
       }
+      
+      completionHandler(self.isLoginConfirmed)
     }
   }
   
@@ -89,13 +103,9 @@ class LoginViewModel: ObservableObject {
       
       switch result {
       case .success(let loginResponse):
-        
-        self.accessToken = loginResponse
-          .accessToken.token
-        
+        self.accessToken = loginResponse.accessToken.token
       case .failure(let failure):
-        
-        self.showAlert(failure)
+        self.updateAlertState(type: .refreshAcessToken, failure)
       }
     }
   }
