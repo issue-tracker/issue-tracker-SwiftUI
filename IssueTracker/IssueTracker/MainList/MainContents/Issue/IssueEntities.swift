@@ -38,7 +38,15 @@ struct AllIssueEntity: Codable {
   }
 }
 
-struct IssueListEntity: Codable {
+struct IssueListEntity: Codable, Hashable {
+  static func == (lhs: IssueListEntity, rhs: IssueListEntity) -> Bool {
+    lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+  
   let id: Int
   let title: String
   
@@ -155,7 +163,7 @@ struct IssueHistories: Decodable {
   let label: LabelListEntity?
   let milestone: MilestoneInIssueEntity?
   let assignee: IssueAssignee?
-  let previousTitle: String
+  let previousTitle: String?
   let changedTitle: String?
   
   init(from decoder: Decoder) throws {
@@ -164,10 +172,10 @@ struct IssueHistories: Decodable {
     modifier = try values.decode(IssueListAuthor.self, forKey: .modifier)
     modifiedAt = try values.decode(String.self, forKey: .modifiedAt)
     action = try values.decode(String.self, forKey: .action)
-    label = try values.decode(LabelListEntity.self, forKey: .label)
-    milestone = try values.decode(MilestoneInIssueEntity.self, forKey: .milestone)
-    assignee = try values.decode(IssueAssignee.self, forKey: .assignee)
-    previousTitle = try values.decode(String.self, forKey: .previousTitle)
+    label = try? values.decode(LabelListEntity.self, forKey: .label)
+    milestone = try? values.decode(MilestoneInIssueEntity.self, forKey: .milestone)
+    assignee = try? values.decode(IssueAssignee.self, forKey: .assignee)
+    previousTitle = try? values.decode(String.self, forKey: .previousTitle)
     changedTitle = try? values.decode(String.self, forKey: .changedTitle)
   }
   

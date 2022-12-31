@@ -7,10 +7,13 @@
 
 import Foundation
 
-class IssueListViewModel {
+class IssueListViewModel: ObservableObject {
   
   @Published
   private(set) var issueLists: [IssueListEntity] = []
+  
+  @Published
+  var gridRowNumber: IssueGridRowNumber = .two
   
   @Published
   var showAlert: Bool = false
@@ -22,25 +25,33 @@ class IssueListViewModel {
   var toastColor: RGBColorValues = .gray
   var toastMessage: String = ""
   
+  enum IssueGridRowNumber: Int {
+  case one = 1
+    case two = 2
+    case three = 3
+  }
+  
   private let opacityValue: Double = 0.3
   
   let requestModel = HTTPRequestModel(URL.issueApiURL)
   
-  func getIssueList(pageNumber: Int = 0, completionHandler: @escaping ([IssueListEntity])->Void) {
+  init() {
+    getIssueList()
+  }
+  
+  func getIssueList(pageNumber: Int = 0) {
     guard let requestModel else { return }
     
     requestModel.builder.setURLQuery(["page": "\(pageNumber)"])
     requestModel.request { result, response in
       
-      guard
-        let data = try? result.get(),
-        let result = HTTPResponseModel().getDecoded(from: data, as: AllIssueEntity.self)
-      else {
-        return
-      }
+      guard let data = try? result.get() else { return }
+      print(String(data: data, encoding: .utf8) ?? "")
+      let result = HTTPResponseModel().getDecoded(from: data, as: AllIssueEntity.self)?.issues ?? []
       
-      self.issueLists = result.issues
+      DispatchQueue.main.async {
+        self.issueLists = result
+      }
     }
   }
 }
-
