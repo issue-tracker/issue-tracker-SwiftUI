@@ -16,7 +16,7 @@ struct HomeView: View {
   @ViewBuilder
   var body: some View {
     if userState.isLogin {
-      MainView()
+      MainContentsTabView()
         .preferredColorScheme($appState.appearance.toColorScheme())
     } else {
       LoginView()
