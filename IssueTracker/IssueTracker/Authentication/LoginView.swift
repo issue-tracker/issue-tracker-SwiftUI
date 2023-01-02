@@ -30,6 +30,7 @@ struct LoginView: View {
         
         CommonTextField(
           capImage: vm.passwordTextValue.count > 0 ? Image.lockOpen : Image.lock,
+          isSecure: true,
           placeHolder: I18N.L_N_LVC_TXTF_PW,
           text: $vm.passwordTextValue)
         
@@ -113,7 +114,9 @@ struct LoginView: View {
       .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
       .onAppear {
         vm.checkAlreadyLogin { result in
-          self.userState.isLogin = result
+          DispatchQueue.main.async {
+            self.userState.isLogin = result
+          }
         }
       }
 //      .navigationBarTitleDisplayMode(.inline)

@@ -72,13 +72,15 @@ class LoginViewModel: ObservableObject {
       case .success(let loginResponse):
         
         loginResponse.setUserDefaults()
-        self.isLoginConfirmed = true
+        DispatchQueue.main.async {
+          self.isLoginConfirmed = true
+          completionHandler(true)
+        }
         
       case .failure(let failure):
         self.updateAlertState(type: .requestLogin, failure)
+        completionHandler(false)
       }
-      
-      completionHandler(self.isLoginConfirmed)
     }
   }
   
