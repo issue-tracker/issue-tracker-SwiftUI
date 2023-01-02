@@ -14,8 +14,8 @@ struct IssueListView: View {
   
   var body: some View {
     GeometryReader { proxy in
-      ScrollView(spacing: spacing) {
-        LazyVGrid(columns: getLayout(proxy)) {
+      ScrollView {
+        LazyVGrid(columns: getLayout(proxy), spacing: spacing) {
           ForEach(
             viewModel.issueLists,
             id: \.self
