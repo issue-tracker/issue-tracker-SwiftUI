@@ -14,33 +14,22 @@ struct IssueListView: View {
   
   var body: some View {
     GeometryReader { proxy in
-      ScrollView {
-        LazyVGrid(columns: getLayout(proxy), spacing: spacing) {
-          ForEach(
-            viewModel.issueLists,
-            id: \.self
-          ) { issue in
-            
-            NavigationLink(destination: IssueDetailView()) {
-              
-              IssueListItemView(
-                title: issue.title,
-                date: issue.createdAt ?? "",
-                contents: issue.comments.first?.content ?? "")
-              .frame(height: proxy.size.height / 3.5)
-            }
-          }
-        } // end of LazyVGrid
-      } // end of ScrollView
-    } // end of GeometryReader
-  }
-  
-  private func getLayout(_ proxy: GeometryProxy) -> [GridItem] {
-    Array(
-      repeating: GridItem(.adaptive(
-        minimum: proxy.size.width / CGFloat(viewModel.gridRowNumber.rawValue),
-        maximum: proxy.size.width)),
-      count: viewModel.gridRowNumber.rawValue)
+      MainContentsListGridView<IssueListEntity, NavigationLink<IssueListItemView, IssueDetailView>>(
+        proxy,
+        rowNumber: $viewModel.gridRowNumber,
+        identifiables: $viewModel.issueLists
+      ) { entity in
+        
+        NavigationLink(destination: IssueDetailView()) {
+          
+          IssueListItemView(
+            title: entity.title,
+            date: entity.createdAt ?? "",
+            contents: entity.comments.first?.content ?? "",
+            height: proxy.size.height / 3.5)
+        }
+      }
+    }
   }
 }
 

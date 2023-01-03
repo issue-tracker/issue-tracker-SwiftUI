@@ -7,13 +7,19 @@
 
 import Foundation
 
+enum MainContentsGridRowNumber: Int {
+  case one = 1
+  case two = 2
+  case three = 3
+}
+
 class IssueListViewModel: ObservableObject {
   
   @Published
-  private(set) var issueLists: [IssueListEntity] = []
+  var issueLists: [IssueListEntity] = []
   
   @Published
-  var gridRowNumber: IssueGridRowNumber = .two
+  var gridRowNumber: MainContentsGridRowNumber = .two
   
   @Published
   var showAlert: Bool = false
@@ -24,12 +30,6 @@ class IssueListViewModel: ObservableObject {
   var showToast: Bool = false
   var toastColor: RGBColorValues = .gray
   var toastMessage: String = ""
-  
-  enum IssueGridRowNumber: Int {
-  case one = 1
-    case two = 2
-    case three = 3
-  }
   
   private let opacityValue: Double = 0.3
   

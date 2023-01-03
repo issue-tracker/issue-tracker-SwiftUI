@@ -12,6 +12,7 @@ struct IssueListItemView: View {
   var title: String
   var date: String
   var contents: String
+  var height: CGFloat
   
   var body: some View {
     VStack(spacing: 5) {
@@ -22,6 +23,7 @@ struct IssueListItemView: View {
     }
     .background(Color.white)
     .clipShape(RoundedRectangle(cornerRadius: spacing/2))
+    .frame(height: height)
   }
 }
 
@@ -30,6 +32,8 @@ struct IssueListItemView_Previews: PreviewProvider {
     IssueListItemView(
       title: "title",
       date: "date",
-      contents: "contents")
+      contents: "contents",
+      height: 180
+    )
   }
 }
