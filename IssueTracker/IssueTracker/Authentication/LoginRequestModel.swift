@@ -11,17 +11,18 @@ class LoginRequestModel {
   
   private let requestModel = HTTPRequestModel(URL.apiURL)
   private let responseModel = HTTPResponseModel()
+  let defaultErrorMessage = "알 수 없는 에러가 발생하였습니다. 다시 시도해주시기 바랍니다."
   
-  let dataProcessingError = LoginRequestError.processFailed("데이터 처리 도중 오류가 발생하였습니다. 다시 시도해주시기 바랍니다.")
+  lazy var dataProcessingError = LoginRequestError.processFailed(defaultErrorMessage)
   let unRecognizedResopnseError = LoginRequestError.unRecognizedResponse
-  let accessTokenError = LoginRequestError.errorWithCode(1001)
-  let refreshTokenError = LoginRequestError.errorWithCode(1004)
+  lazy var accessTokenError = LoginRequestError.errorWithCode(1001.decodeAsError() ?? defaultErrorMessage)
+  lazy var refreshTokenError = LoginRequestError.errorWithCode(1004.decodeAsError() ?? defaultErrorMessage)
   
   /// Check data with response has error-code or error-message. If it isn't, returns nil.
   private func getErrorResponseData(_ data: Data) -> LoginRequestError? {
-    if let errorCode = self.responseModel.getErrorCodeResponse(from: data) {
-      return LoginRequestError.errorWithCode(errorCode)
-    } else if let message = self.responseModel.getMessageResponse(from: data) {
+    if let errorCode = responseModel.getErrorCodeResponse(from: data) {
+      return LoginRequestError.errorWithCode(errorCode.decodeAsError() ?? defaultErrorMessage)
+    } else if let message = responseModel.getMessageResponse(from: data) {
       return LoginRequestError.errorWithMessage(message)
     }
     
@@ -30,7 +31,7 @@ class LoginRequestModel {
   
   /// Get result instance from response. If fails, result instance contains RequestError.
   private func getResultFromData<T: Decodable>(_ data: Data) -> Result<T, LoginRequestError> {
-    guard let resultData = self.responseModel.getDecoded(from: data, as: T.self) else {
+    guard let resultData = responseModel.getDecoded(from: data, as: T.self) else {
       return .failure(self.getErrorResponseData(data) ?? .unExpectedData)
     }
     
@@ -50,11 +51,7 @@ class LoginRequestModel {
     model.request(pathArray: ["members", "signin"]) { result, response in
       
       guard let response = response as? HTTPURLResponse else {
-        
-        completionHandler(.failure(
-          self.unRecognizedResopnseError
-        ))
-        
+        completionHandler(.failure(self.unRecognizedResopnseError))
         return
       }
       
@@ -67,33 +64,20 @@ class LoginRequestModel {
           completionHandler(.failure(error))
           
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
-        }
+          completionHandler(.failure(self.dataProcessingError))
+        } // end of do-catch
         
       case 200..<300:
         do {
-          
           completionHandler(
-            self.getResultFromData(
-              try result.get()
-            )
+            self.getResultFromData(try result.get())
           )
-          
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
+          completionHandler(.failure(self.dataProcessingError))
         } // end of do-catch
         
       default:
-        
-        completionHandler(.failure(
-          LoginRequestError.failedRequest
-        ))
+        completionHandler(.failure(LoginRequestError.failedRequest))
       } // end of switch
     } // end of request
   }
@@ -107,17 +91,12 @@ class LoginRequestModel {
     model.request(pathArray: ["auth", "test"]) { result, response in
       
       guard let response = response as? HTTPURLResponse else {
-        
-        completionHandler(.failure(
-          self.unRecognizedResopnseError
-        ))
-        
+        completionHandler(.failure(self.unRecognizedResopnseError))
         return
       }
       
       switch response.statusCode {
       case 401:
-        
         do {
           let data = try result.get()
           let error = self.getErrorResponseData(data) ?? self.accessTokenError
@@ -125,33 +104,20 @@ class LoginRequestModel {
           completionHandler(.failure(error))
           
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
-        }
+          completionHandler(.failure(self.dataProcessingError))
+        } // end of do-catch
         
       case 200..<300:
         do {
-          
           completionHandler(
-            self.getResultFromData(
-              try result.get()
-            )
+            self.getResultFromData(try result.get())
           )
-          
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
+          completionHandler(.failure(self.dataProcessingError))
         } // end of do-catch
         
       default:
-        
-        completionHandler(.failure(
-          LoginRequestError.failedRequest
-        ))
+        completionHandler(.failure(LoginRequestError.failedRequest))
       } // end of switch
     } // end of request
   }
@@ -166,10 +132,7 @@ class LoginRequestModel {
     model.request(pathArray: ["auth", "reissue"]) { result, response in
       
       guard let response = response as? HTTPURLResponse else {
-        
-        completionHandler(.failure(
-          self.unRecognizedResopnseError
-        ))
+        completionHandler(.failure(self.unRecognizedResopnseError))
         return
       }
       
@@ -182,33 +145,20 @@ class LoginRequestModel {
           completionHandler(.failure(error))
           
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
-        }
+          completionHandler(.failure(self.dataProcessingError))
+        } // end of do-catch
         
       case 200..<300:
         do {
-          
           completionHandler(
-            self.getResultFromData(
-              try result.get()
-            )
+            self.getResultFromData(try result.get())
           )
-          
         } catch {
-          
-          completionHandler(.failure(
-            self.dataProcessingError
-          ))
+          completionHandler(.failure(self.dataProcessingError))
         } // end of do-catch
         
       default:
-        
-        completionHandler(.failure(
-          LoginRequestError.failedRequest
-        ))
+        completionHandler(.failure(LoginRequestError.failedRequest))
       } // end of switch
     } // end of request
   }

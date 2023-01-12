@@ -9,17 +9,26 @@ import Foundation
 
 enum LoginRequestError: Error {
   case failedRequest, unExpectedData, unRecognizedResponse
-  case processFailed(String), errorWithMessage(String), errorWithCode(Int)
+  case processFailed(String), errorWithMessage(String), errorWithCode(String)
+  
+  func getErrorMessage() -> String? {
+    switch self {
+    case .processFailed(let msg), .errorWithMessage(let msg), .errorWithCode(let msg):
+      return msg
+    default:
+      return nil
+    }
+  }
 }
 
 class LoginViewModel: ObservableObject {
   // MARK: - [START] States
+  var isLoginConfirmed: Bool = false
+  
   @Published
   var idTextValue: String = ""
   @Published
   var passwordTextValue: String = ""
-  @Published
-  var isLoginConfirmed: Bool = false
   
   @Published
   var showAlert: Bool = false
@@ -43,23 +52,14 @@ class LoginViewModel: ObservableObject {
   private let requestModel: LoginRequestModel = .init()
   // MARK: - [END] States
   
-  private var defaultErrorMessage = "알 수 없는 에러가 발생하였습니다. 다시 시도해주시기 바랍니다."
-  
   // MARK: - [START] Alerts
   private func updateAlertState(type: AlertType, _ error: LoginRequestError) {
-    switch error {
-    case .processFailed(let msg):
-      alertMessage = msg
-    case .errorWithMessage(let msg):
-      alertMessage = msg
-    default:
-      alertMessage = defaultErrorMessage
-    }
     
+    alertMessage = error.getErrorMessage() ?? requestModel.defaultErrorMessage
     alertTitle = type.getTitle()
     
-    DispatchQueue.main.async { [weak self] in
-      self?.showAlert = true
+    DispatchQueue.main.async {
+      self.showAlert = true
     }
   }
   // MARK: - [END] Alerts
@@ -71,16 +71,14 @@ class LoginViewModel: ObservableObject {
       switch result {
       case .success(let loginResponse):
         
+        self.isLoginConfirmed = true
         loginResponse.setUserDefaults()
-        DispatchQueue.main.async {
-          self.isLoginConfirmed = true
-          completionHandler(true)
-        }
         
       case .failure(let failure):
         self.updateAlertState(type: .requestLogin, failure)
-        completionHandler(false)
       }
+      
+      completionHandler(self.isLoginConfirmed)
     }
   }
   
