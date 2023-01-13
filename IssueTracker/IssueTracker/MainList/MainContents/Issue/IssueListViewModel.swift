@@ -11,6 +11,8 @@ enum MainContentsGridRowNumber: Int {
   case one = 1
   case two = 2
   case three = 3
+  
+  static var max: Self = .three
 }
 
 class IssueListViewModel: ObservableObject {
@@ -19,7 +21,17 @@ class IssueListViewModel: ObservableObject {
   var issueLists: [IssueListEntity] = []
   
   @Published
-  var gridRowNumber: MainContentsGridRowNumber = .two
+  var gridColumnNumber: MainContentsGridRowNumber = .two
+  var gridRowNumber: CGFloat {
+    switch gridColumnNumber {
+    case .one:
+      return CGFloat(5)
+    case .two:
+      return CGFloat(5)
+    case .three:
+      return CGFloat(6)
+    }
+  }
   
   @Published
   var showAlert: Bool = false
@@ -52,6 +64,14 @@ class IssueListViewModel: ObservableObject {
       DispatchQueue.main.async {
         self.issueLists = result
       }
+    }
+  }
+  
+  func getToolbarGridButtonColor(_ gridRowNumber: MainContentsGridRowNumber) -> RGBColorValues {
+    if self.gridColumnNumber == gridRowNumber {
+      return RGBColorValues.blue
+    } else {
+      return RGBColorValues.gray
     }
   }
 }

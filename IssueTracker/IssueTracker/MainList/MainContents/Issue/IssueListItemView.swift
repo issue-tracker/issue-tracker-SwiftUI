@@ -16,14 +16,40 @@ struct IssueListItemView: View {
   
   var body: some View {
     VStack(spacing: 5) {
-      Text(title)
-      Text(date)
-      Text(contents)
+      CommonLabel(text: title)
+        .padding(.top)
+      CommonLabel(text: date.toYMDForm())
+      CommonLabel(text: contents, lineLimit: 2)
+        .padding(.bottom)
       Spacer()
     }
-    .background(Color.white)
+    .frame(maxWidth: .infinity, minHeight: height, maxHeight: height)
+    .foregroundColor(Color.black)
+    .background(Color.init(red: 224/255, green: 224/255, blue: 224/255))
     .clipShape(RoundedRectangle(cornerRadius: spacing/2))
-    .frame(height: height)
+  }
+}
+
+struct CommonLabel: View {
+  var text: String
+  var lineLimit = 1
+  
+  init(text: String, lineLimit: Int = 1) {
+    self.text = text
+    self.lineLimit = lineLimit
+  }
+  
+  var body: some View {
+    HStack {
+      Text(text)
+        .lineLimit(lineLimit)
+        .truncationMode(.tail)
+        .padding(.leading, 6)
+        .padding(.trailing, 6)
+        .multilineTextAlignment(.leading)
+        .minimumScaleFactor(0.4)
+      Spacer()
+    }
   }
 }
 
@@ -35,5 +61,15 @@ struct IssueListItemView_Previews: PreviewProvider {
       contents: "contents",
       height: 180
     )
+  }
+}
+
+private extension String {
+  func toYMDForm(_ separator: String = "-") -> String {
+    let dateAndTime = self.split(separator: "T")
+    
+    return String(dateAndTime.first ?? "")
+      + " "
+      + String(dateAndTime.last?.prefix(5) ?? "")
   }
 }

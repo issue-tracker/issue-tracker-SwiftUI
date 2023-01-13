@@ -14,13 +14,10 @@ struct MainContentsListView: View {
         HStack {
           IssueListView()
             .frameFitSize(proxy.size)
-            .background(Color.red)
           LabelListView()
             .frameFitSize(proxy.size)
-            .background(Color.green)
           MilestoneListView()
             .frameFitSize(proxy.size)
-            .background(Color.blue)
         }
       }
     }

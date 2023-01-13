@@ -43,10 +43,12 @@ struct MainContentsListGridView<Item: Hashable, ContentsView: View>: View {
   }
   
   private func getLayout(_ proxy: GeometryProxy) -> [GridItem] {
-    Array(
-      repeating: GridItem(.adaptive(
-        minimum: proxy.size.width / CGFloat(rowNumber.rawValue),
-        maximum: proxy.size.width)),
+    var width = proxy.size.width / CGFloat(rowNumber.rawValue)
+    
+    width -= (spacing * CGFloat(3 - rowNumber.rawValue))
+    
+    return Array(
+      repeating: GridItem(.fixed(width)),
       count: rowNumber.rawValue)
   }
 }
