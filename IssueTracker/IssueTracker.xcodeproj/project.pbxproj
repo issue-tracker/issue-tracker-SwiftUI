@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B2243DB299DDBD60063262C /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2243DA299DDBD60063262C /* CircleView.swift */; };
+		1B2243DD299DDC7B0063262C /* DescriptionText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2243DC299DDC7B0063262C /* DescriptionText.swift */; };
+		1B2243DF299DDCB20063262C /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2243DE299DDCB20063262C /* InputField.swift */; };
 		1B5590E8294FED120027AA34 /* IssueTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5590E7294FED120027AA34 /* IssueTrackerApp.swift */; };
 		1B5590EA294FED120027AA34 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5590E9294FED120027AA34 /* Persistence.swift */; };
 		1B5590ED294FED120027AA34 /* IssueTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1B5590EB294FED120027AA34 /* IssueTracker.xcdatamodeld */; };
@@ -102,6 +105,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B2243DA299DDBD60063262C /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		1B2243DC299DDC7B0063262C /* DescriptionText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionText.swift; sourceTree = "<group>"; };
+		1B2243DE299DDCB20063262C /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		1B5590E4294FED120027AA34 /* IssueTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B5590E7294FED120027AA34 /* IssueTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueTrackerApp.swift; sourceTree = "<group>"; };
 		1B5590E9294FED120027AA34 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -331,6 +337,9 @@
 			children = (
 				1B559125294FFE610027AA34 /* CommonTextField.swift */,
 				1B55913D295016A60027AA34 /* CommonButton.swift */,
+				1B2243DA299DDBD60063262C /* CircleView.swift */,
+				1B2243DC299DDC7B0063262C /* DescriptionText.swift */,
+				1B2243DE299DDCB20063262C /* InputField.swift */,
 			);
 			path = CommonUIStyles;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 				1BD03B6E295FF76600533A4D /* MilestoneListViewModel.swift in Sources */,
 				1BD03B66295FE9C100533A4D /* IssueEntities.swift in Sources */,
 				1BD03B54295ECA2400533A4D /* LabelListItem.swift in Sources */,
+				1B2243DB299DDBD60063262C /* CircleView.swift in Sources */,
 				1BD03B5D295ED11E00533A4D /* IssueListView.swift in Sources */,
 				1BD03B722960052200533A4D /* IssueDetailView.swift in Sources */,
 				1B9EADD22963D98100B4221A /* MainContentsListGridView.swift in Sources */,
@@ -635,9 +645,11 @@
 				1B5590E8294FED120027AA34 /* IssueTrackerApp.swift in Sources */,
 				1BCB9BC6295940BE0063B21A /* HTTPRequestModel.swift in Sources */,
 				1B55913629500D950027AA34 /* Localizable+Extensions.swift in Sources */,
+				1B2243DF299DDCB20063262C /* InputField.swift in Sources */,
 				1BCB9BC8295940F70063B21A /* URLRequestBuilder.swift in Sources */,
 				1B926815295A605900BF2A2A /* SignInValidationModel.swift in Sources */,
 				1B5590EF294FED120027AA34 /* ContentView.swift in Sources */,
+				1B2243DD299DDC7B0063262C /* DescriptionText.swift in Sources */,
 				1BD03B58295ECDDB00533A4D /* MainContentsListView.swift in Sources */,
 				1BD03B68295FED7300533A4D /* Color+Extensions.swift in Sources */,
 				1BF763722951B17F00A1CD8C /* AppState.swift in Sources */,
